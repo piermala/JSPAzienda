@@ -15,15 +15,7 @@ public class ClienteBean extends UtenteBean implements IsValid  {
 	private String ragioneSociale;
 	private String pIVA;
 	
-	public ClienteBean() {
-		setNome("");
-		setCognome("");
-		setUsername("");
-		setPassword("");
-		setRuolo(' ');
-		this.ragioneSociale = "";
-		this.pIVA = "";
-	}
+	public ClienteBean() {}
 	
 	public ClienteBean(String nome, String cognome,
 			String username, String password, char ruolo,String ragioneSociale, String pIVA) {

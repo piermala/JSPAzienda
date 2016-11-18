@@ -16,13 +16,13 @@
             <!-- user dropdown starts -->
             <div class="btn-group pull-right">
                 <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                    <i class="glyphicon glyphicon-user"></i><span class="hidden-sm hidden-xs"> admin</span>
+                    <i class="glyphicon glyphicon-user"></i><span class="hidden-sm hidden-xs"></span>
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu">
                     <li><a href="#">Profile</a></li>
                     <li class="divider"></li>
-                    <li><a href="../Accesso/doLogout.jsp">Logout</a></li>
+                    <li><a href="../login/doLogout.jsp">Logout</a></li>
                 </ul>
             </div>
             <!-- user dropdown ends -->
@@ -31,7 +31,7 @@
             <div class="btn-group pull-right theme-container animated tada">
                 <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                     <i class="glyphicon glyphicon-tint"></i><span
-                        class="hidden-sm hidden-xs"> Change Theme / Skin</span>
+                        class="hidden-sm hidden-xs"></span>
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu" id="themes">

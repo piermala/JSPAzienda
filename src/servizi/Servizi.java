@@ -1,13 +1,16 @@
 package servizi;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import utility.ConvertiPassword;
 import model.AdminBean;
+import model.BustaPaga;
 import model.UtenteBean;
 import model.ClienteBean;
 import model.DipendenteBean;
 import dao.AdminDao;
+import dao.BustaDao;
 import dao.ClienteDao;
 import dao.DipendenteDao;
 import dao.RubricaDao;
@@ -19,6 +22,7 @@ public class Servizi {
 	AdminDao aDao = new AdminDao();
 	ClienteDao cDao = new ClienteDao();
 	DipendenteDao dDao = new DipendenteDao();
+	BustaDao bDao = new BustaDao();
 	
 	
 	
@@ -30,13 +34,21 @@ public class Servizi {
 		return utente;	
 	}
 	
-	
-	
+		
 	/// CERCA CON USERNAME
 	public UtenteBean cercaConUsername(String username) {
 			
 		UtenteBean u = null;
 		u = uDao.cercaConUsername(username);
+			
+		return u;		
+	}	
+	
+	/// CERCA UTENTE CON ID
+	public UtenteBean cercaUtenteConId(long id) {
+		
+		UtenteBean u = null;
+		u = uDao.trovaUtenteConId(id);
 			
 		return u;		
 	}	
@@ -60,8 +72,6 @@ public class Servizi {
 			
 		return admin;			
 	}
-		
-		
 		
 		
 	
@@ -92,6 +102,7 @@ public class Servizi {
 		clienti = cDao.leggiTuttiClienti();
 		
 		return clienti;
+		
 	}
 		
 		
@@ -102,6 +113,7 @@ public class Servizi {
 		DipendenteBean dipendente = dDao.createDipendente(nome, cognome, username, password, posizione, stipendio);
 			
 		return dipendente;	
+		
 	}
 		
 		
@@ -112,7 +124,19 @@ public class Servizi {
 		DipendenteBean dipendente = null;
 		dipendente = dDao.trovaDipendenteConUsername(username);
 			
-		return dipendente;			
+		return dipendente;	
+		
+	}
+	
+	
+	
+	/// GET DIPENDENTE DA ID
+	public DipendenteBean getDipendenteConId(long id){
+		
+		DipendenteBean dipendente = null;
+		dipendente = dDao.getDipendenteDaId(id);
+		
+		return dipendente;
 	}
 	
 	
@@ -120,10 +144,39 @@ public class Servizi {
 	/// TUTTI I DIPENDENTI
 	public List<DipendenteBean> getTuttiDipendenti(){
 		List<DipendenteBean> dipendenti = null;
-		dipendenti = dDao.leggiTuttiClienti();
+		dipendenti = dDao.leggiTuttiDipendenti();
 		
 		return dipendenti;
 	}
+	
+	
+	
+	/// CREA BUSTA PAGA
+	public void creaBustaPaga(BustaPaga bp){
+		bDao.aggiungiBustaPaga(bp);
+	}
+	
+	
+	/// LEGGI TUTTE LE BUSTE PAGA
+	public List<BustaPaga> leggiTutteBustePaga(){
+		
+		List<BustaPaga> bustePaga = new ArrayList<BustaPaga>();
+		bustePaga = bDao.getBustePaga();
+		
+		return bustePaga;		
+	}
+	
+	
+	/// LEGGI TUTTE LE BUSTE PAGA
+	public List<BustaPaga> leggiBustePagaDaId(long id) {
+
+		List<BustaPaga> bustePaga = new ArrayList<BustaPaga>();
+		bustePaga = bDao.getBustePagaDaId(id);
+
+		return bustePaga;
+
+	}
+	
 	
 	
 	/// CODIFICA PASSWORD

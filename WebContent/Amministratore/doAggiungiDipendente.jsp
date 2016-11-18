@@ -6,8 +6,8 @@
     pageEncoding="ISO-8859-1"%>
     
     <jsp:useBean id="dipendente" class="model.DipendenteBean" scope="request"></jsp:useBean>
-    <jsp:useBean id="admin" class="model.AdminBean" scope="session"></jsp:useBean>
     <jsp:setProperty property="*" name="dipendente"/>
+    <jsp:useBean id="admin" class="model.AdminBean" scope="session"></jsp:useBean>
     
     <%
     if (admin.isValid()){
@@ -24,7 +24,7 @@
 	    	serv.createDipendente(dipendente.getNome(), dipendente.getCognome(), dipendente.getUsername(), passCodificata, dipendente.getPosizione(), dipendente.getStipendio());
 	    	servRubrica.aggiungiRubrica(dipendente.getUsername());
 	    	
-	    	response.sendRedirect("HomepageAdmin.jsp");
+	    	response.sendRedirect("listaDipendenti.jsp");
 	    	
 	    } else {
    	%>
@@ -32,7 +32,7 @@
    	<% 	
     	}
     } else {
-    	response.sendRedirect("login.jsp");
+    	response.sendRedirect("../login/login.jsp");
     	session.invalidate();
     }
     %>

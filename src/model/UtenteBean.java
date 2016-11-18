@@ -16,7 +16,7 @@ public class UtenteBean implements Serializable{
 
 	@Id 
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private long idUtente;
+	protected long idUtente;
 	
 	protected String nome;
 	protected String cognome;
@@ -36,11 +36,11 @@ public class UtenteBean implements Serializable{
 		this.ruolo = ruolo;
 	}
 
-	public long getId_Utente() {
+	public long getIdUtente() {
 		return idUtente;
 	}
 
-	public void setId_Utente(long idUtente) {
+	public void setIdUtente(long idUtente) {
 		this.idUtente = idUtente;
 	}
 

@@ -47,7 +47,7 @@ public class RubricaDao {
 		tx=session.getTransaction();
 		tx.begin();
 		
-		Query query = session.createQuery("from RUBRICA where nome=:nome");
+		Query query = session.createQuery("from Rubrica where nome=:nome");
 		query.setString("nome", nome);
 		
 		r = (Rubrica) query.uniqueResult();
@@ -61,6 +61,34 @@ public class RubricaDao {
 		return r;		
 	}
 	
+	
+	
+	/// LEGGI ID DA RUBRICA
+	public int leggiId(String username){
+		
+		Session session =HibernateUtil.openSession();
+		Transaction tx=null;
+		
+		int id = -1;
+
+		try{
+		tx=session.getTransaction();
+		tx.begin();
+		
+		Query query = session.createQuery("from Rubrica where nome=:nome");
+		query.setString("nome", username);
+		
+		Rubrica r = (Rubrica) query.uniqueResult();
+		id = r.getId_rubrica();
+		
+		 tx.commit();
+		}catch(Exception ex){
+			tx.rollback();
+		}finally{
+			session.close();
+		}
+		return id;		
+	}
 	
 	
 	/// LEGGI DA TELEFONO

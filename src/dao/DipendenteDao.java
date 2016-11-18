@@ -52,7 +52,7 @@ public class DipendenteDao {
 			tx=session.getTransaction();
 			tx.begin();
 			
-			Query query=session.createQuery("from DipendenteBean where username=:username");
+			Query query=session.createQuery("from UtenteBean where username=:username");
 			query.setString("username", username);
 				
 			dipendente = (DipendenteBean)query.uniqueResult();
@@ -68,13 +68,42 @@ public class DipendenteDao {
 	}
 	
 	
-	/// TUTTI I DIPENDENTI
-	public List<DipendenteBean> leggiTuttiClienti() {
+	/// CERCA DIPENDENTE DA ID
+	public DipendenteBean getDipendenteDaId(long id) {
+
+		DipendenteBean dipendente = null;
+
+		Session session = HibernateUtil.openSession();
+		Transaction tx = null;
+
+		try {
+			tx = session.getTransaction();
+			tx.begin();
+
+			Query query = session
+					.createQuery("from DipendenteBean where idutente=:id");
+			query.setLong("id", id);
+
+			dipendente = (DipendenteBean) query.uniqueResult();
+
+			tx.commit();
+
+		} catch (Exception ex) {
+			tx.rollback();
+		} finally {
+			session.close();
+		}
+		return dipendente;
+	}
 		
-		List<DipendenteBean> dipendenti = new ArrayList<DipendenteBean>();
-			
+	
+	/// TUTTI I DIPENDENTI
+	public List<DipendenteBean> leggiTuttiDipendenti() {
+		
 		Session session =HibernateUtil.openSession();
 		Transaction tx=null;
+		
+		List<DipendenteBean> dipendenti = new ArrayList<DipendenteBean>();
 
 		try{
 			tx=session.getTransaction();
@@ -82,7 +111,7 @@ public class DipendenteDao {
 			
 			Query query=session.createQuery("from DipendenteBean");
 				
-			dipendenti = query.list();
+			dipendenti = (List<DipendenteBean>)query.list();
 				
 			tx.commit();
 		}catch(Exception ex){

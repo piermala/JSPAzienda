@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     
-    <jsp:useBean id="admin" class="model.AdminBean" scope="request" />
+    <jsp:useBean id="admin" class="model.AdminBean" scope="session" />
     <jsp:setProperty property="*" name="admin"/>
     
     <jsp:include page="../charisma/headerHtml.jsp"></jsp:include>
 	<jsp:include page="../charisma/navBar.jsp"></jsp:include>
 	
-	
+<%if (admin.isValid()) {%>
 	<div class="ch-container">
 		<div class="row">
 		
@@ -70,5 +70,13 @@
 	
 </body>
 </html>
+
+<%} else {
+
+	session.invalidate();
+	response.sendRedirect("../login/login.jsp");
+}	
+%>
+}
 
 

@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    <jsp:useBean id="dipendente" class="model.DipendenteBean" scope="session"></jsp:useBean>
+    <jsp:useBean id="cliente" class="model.ClienteBean"	scope="session"></jsp:useBean>
     
     
-<%if(dipendente.isValid()) {%> 
+<%if(cliente.isValid()) {%> 
 
 	<jsp:include page="../charisma/headerHtml.jsp"></jsp:include>
 	<jsp:include page="../charisma/navBar.jsp"></jsp:include>
@@ -15,12 +15,11 @@
 		
 				<ul class="breadcrumb">
 					<li><a href="#">Home</a></li>
-					<li><a href="#">Dipendente</a></li>
 					<li><a href="#">Aggiungi Voce</a></li>
 				</ul>
 	
 			<!-- left menu starts -->
-			<jsp:include page="../Dipendente/menuLateraleDipendente.jsp"></jsp:include>
+			<jsp:include page="../Cliente/menuLateraleCliente.jsp"></jsp:include>
 			<!-- left menu ends -->
 	
 			<div id="content" class="col-lg-10 col-sm-10">
@@ -29,14 +28,14 @@
 	
 					<div id="formRegistrazioneVoce">
   
-						<form action="doAggiungiVoceDipendente.jsp" method="post">
+						<form action="doAggiungiVoceCliente.jsp" method="post">
 						  Nome <input type="text" name="nome" /><br>
 						  Cognome <input type="text" name="cognome" /><br>
 						  Telefono <input type="number" name="telefono" /><br>
 						  <input type="submit" value="Aggiungi"/>
 						</form>
 						
-						<form action="../Dipendente/HomepageDipendente.jsp" method="post">
+						<form action="../Cliente/HomepageCliente.jsp" method="post">
 						  <input type="submit" value="Annulla"/>	
 						</form>
 						

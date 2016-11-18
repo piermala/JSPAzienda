@@ -1,5 +1,7 @@
 package dao;
 
+import java.util.List;
+
 import hibernateUtil.HibernateUtil;
 import model.Rubrica;
 import model.Voce;
@@ -83,6 +85,32 @@ public class VoceDao {
 		}catch(Exception ex){
 			tx.rollback();
 		}finally{
+			session.close();
+		}
+		return v;
+	}
+	
+	/// LEGGI TUTTE LE VOCI
+	public List<Voce> getTutteLeVoci(int id) {
+		Session session = HibernateUtil.openSession();
+		Transaction tx = null;
+
+		List<Voce> v = null;
+
+		try {
+			tx = session.getTransaction();
+			tx.begin();
+
+			Query query = session
+					.createQuery("from Voce where Rubrica_id_rubrica=:id");
+			query.setParameter("id", id);
+
+			v = (List<Voce>) query.list();
+
+			tx.commit();
+		} catch (Exception ex) {
+			tx.rollback();
+		} finally {
 			session.close();
 		}
 		return v;

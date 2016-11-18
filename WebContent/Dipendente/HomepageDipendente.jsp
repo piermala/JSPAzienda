@@ -2,7 +2,7 @@
     pageEncoding="ISO-8859-1"%>
      <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     
-    <jsp:useBean id="dipendente" class="model.DipendenteBean"	scope="session"></jsp:useBean>
+    <jsp:useBean id="dipendente" class="model.DipendenteBean" scope="session"></jsp:useBean>
     <jsp:setProperty property="*" name="dipendente"/>
     
     <jsp:include page="../charisma/headerHtml.jsp"></jsp:include>

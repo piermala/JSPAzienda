@@ -1,26 +1,34 @@
-<%@page import="model.DipendenteBean"%>
-<%@page import="servizi.Servizi"%>
-<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    
+    <%@ page import="servizi.Servizi" %>
+    <%@ page import="model.BustaPaga" %>
+    <%@ page import="java.util.List" %>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     
     <jsp:useBean id="admin" class="model.AdminBean" scope="session"></jsp:useBean>
     
     <jsp:include page="../charisma/headerHtml.jsp"></jsp:include>
 	<jsp:include page="../charisma/navBar.jsp"></jsp:include>
-	
-	<script type="text/javascript" src="edit.js"></script>
-	
-
-<% if (admin.isValid()) { %>
     
+
+<% if (admin.isValid()) {	
+
+	Servizi serv = new Servizi();
+	
+	List<BustaPaga> bustePaga = serv.leggiTutteBustePaga();
+	
+	session.setAttribute("bustePaga", bustePaga);
+	
+	%>
+	
+	<!-- DA QUI!!! -->
 	<div class="ch-container">
 		<div class="row">
 		
 				<ul class="breadcrumb">
-					<li><a href="#">Home</a></li>
-					<li><a href="#">Admin</a></li>	
+					<li><a href="HomepageAdmin.jsp">Home</a></li>
+					<li><a href="#">Elenco buste paga</a></li>	
 				</ul>
 	
 			<!-- left menu starts -->
@@ -38,41 +46,25 @@
 							<td>Nome</td>
 							<td>Cognome</td>
 							<td>Posizione</td>
-							<td>Stipendio</td>
-							<td>Username</td>
+							<td>Importo</td>
+							<td>Data</td>
 						</tr>
 					</thead>
-
-					<%
-						Servizi serv = new Servizi();
-
-							List<DipendenteBean> dipendenti = serv.getTuttiDipendenti();
-
-							session.setAttribute("dipendenti", dipendenti);
-					%>
-
 
 
 					<tbody>
 
 						<c:set var="i" value="1" scope="page" />
 
-						<c:forEach items="${dipendenti}" var="d">
+						<c:forEach items="${bustePaga}" var="bp">
 
 							<tr>
-								<td class="center"><c:out value="${i}" /></td>
-								<td class="center"><c:out value="${d.nome}" /></td>
-								<td class="center"><c:out value="${d.cognome}" /></td>
-								<td class="center"><c:out value="${d.posizione}" /></td>
-								<td class="center"><c:out value="${d.stipendio}" /></td>
-								<td class="center"><c:out value="${d.username}" /></td>
-								<td>
-								<form id="formModifiche" method="get">
-									<input type="hidden" value="${d.idUtente}">
-									<button type="button" id="editCliente" type="button" class="btn btn-info"><i class="glyphicon glyphicon-edit icon-white" onclick="confirmEdit()"> Edit </i></button>
-									<button type="button" id="deleteCliente" type="button" class="btn btn-danger"><i class="glyphicon glyphicon-trash icon-white" onclick="confirmDelete()"> Delete </i></button>
-								</form>
-								</td>
+								<td><c:out value="${i}" /></td>
+								<td><c:out value="${bp.dipendente.nome}" /></td>
+								<td><c:out value="${bp.dipendente.cognome}" /></td>
+								<td><c:out value="${bp.dipendente.posizione}" /></td>
+								<td><c:out value="${bp.importo}" /></td>
+								<td><c:out value="${bp.data}" /></td>
 							</tr>
 
 							<c:set var="i" value="${i+1}" scope="page" />
@@ -110,6 +102,7 @@
 	
 	<jsp:include page="../charisma/scriptEnd.jsp"></jsp:include>
 	
+	
 </body>
 </html>
 
@@ -120,5 +113,4 @@
 	
 }
 %>
-
 

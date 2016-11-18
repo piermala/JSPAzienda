@@ -1,11 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     
-    <jsp:useBean id="admin" class="model.AdminBean" scope="request"></jsp:useBean>
+    <jsp:useBean id="admin" class="model.AdminBean" scope="session"></jsp:useBean>
     
     <jsp:include page="../charisma/headerHtml.jsp"></jsp:include>
 	<jsp:include page="../charisma/navBar.jsp"></jsp:include>
  
+
+<% if (admin.isValid()) { %>
 
 	<div class="ch-container">
 		<div class="row">
@@ -39,9 +41,11 @@
 
 
 			</div>
+			
+			
 				<ul class="breadcrumb">
 					<li><a href="#">Home</a></li>
-					<li><a href="#">Admin</a></li>
+					<li><a href="#">Aggiungi Dipendente</a></li>
 	
 				</ul>
 				<div align="center"><font size="4" color="red"></font></div>
@@ -67,3 +71,9 @@
 	
 	<jsp:include page="../charisma/scriptEnd.jsp"></jsp:include>
 
+<%
+} else {
+	session.invalidate();
+	response.sendRedirect("../login/login.jsp");
+}
+%>

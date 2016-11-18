@@ -44,10 +44,6 @@ if (cliente.isValid()){
 				<!--       devo scrivere per ogni pagina   -->
 	
 	
-	
-	
-	
-	
 			</div>
 			<!-- content ends -->
 		</div>

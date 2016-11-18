@@ -36,6 +36,7 @@ lgpl.txt file in the root directory or <http://www.gnu.org/licenses/lgpl-2.1.htm
 <mapping class="model.DipendenteBean" />
 <mapping class="model.Rubrica" />
 <mapping class="model.Voce" />
+<mapping class="model.BustaPaga" />
 
 
 </session-factory>

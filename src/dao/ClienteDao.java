@@ -82,7 +82,7 @@ public class ClienteDao {
 			
 			Query query=session.createQuery("from ClienteBean");
 				
-			clienti = query.list();
+			clienti = (List<ClienteBean>)query.list();
 				
 			tx.commit();
 		}catch(Exception ex){

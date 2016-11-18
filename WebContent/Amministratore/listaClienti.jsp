@@ -11,51 +11,102 @@
 	<jsp:include page="../charisma/navBar.jsp"></jsp:include>
    
 
+<% if (admin.isValid()) {%>
 	
-	<table border="2">
-		<thead>
-		  <tr>
-		  	 <th>Num.</th>
-		     <th>Nome</th>
-		     <th>Cognome</th>
-		     <th>Partita IVA</th>
-		     <th>Ragione sociale</th>
-		     <th>Username</th>
-		  <tr>		
-		</thead>
+	<div class="ch-container">
+		<div class="row">
 		
-		<tbody>
-		
-		<%
+				<ul class="breadcrumb">
+					<li><a href="HomepageAdmin.jsp">Home</a></li>
+					<li><a href="#">Lista Clienti</a></li>	
+				</ul>
 	
-		Servizi serv = new Servizi();
+			<!-- left menu starts -->
+			<jsp:include page="menuLateraleAdmin.jsp"></jsp:include>
+			<!-- left menu ends -->
 	
-		List<ClienteBean> clienti = serv.getTuttiClienti();	
-		
-		session.setAttribute("clienti", clienti);
+			<div id="content" class="col-lg-10 col-sm-10">
+				<!-- content starts -->
+			<div>
+
+				<table border="2">
+					<thead>
+						<tr>
+							<th>Num.</th>
+							<th>Nome</th>
+							<th>Cognome</th>
+							<th>Partita IVA</th>
+							<th>Ragione sociale</th>
+							<th>Username</th>
+						<tr>
+					</thead>
+
+					<tbody>
+
+						<%
+							Servizi serv = new Servizi();
+
+								List<ClienteBean> clienti = serv.getTuttiClienti();
+
+								session.setAttribute("clienti", clienti);
+						%>
+
+						<c:set var="i" value="1" scope="page" />
+
+						<c:forEach items="${clienti}" var="c">
+
+							<tr>
+								<td><c:out value="${i}" /></td>
+								<td><c:out value="${c.nome}" /></td>
+								<td><c:out value="${c.cognome}" /></td>
+								<td><c:out value="${c.pIVA}" /></td>
+								<td><c:out value="${c.ragioneSociale}" /></td>
+								<td><c:out value="${c.username}" /></td>
+							</tr>
+
+							<c:set var="i" value="${i+1}" scope="page" />
+						</c:forEach>
+
+					</tbody>
+
+
+				</table>
+
+			</div>
+
+			<div align="center"><font size="4" color="red"></font></div>
+			</div>
+			
+			<div class=" row">
 	
-		%>
+				<!--       devo scrivere per ogni pagina   -->
 	
-		  <c:set var="i" value="1" scope="page" />
-		  
-		  <c:forEach items="${clienti}" var="c">			
-		
-		  <tr>
-		     <td><c:out value="${i}" /></td>
-			 <td><c:out value="${c.nome}" /></td>
-			 <td><c:out value="${c.cognome}" /></td>
-			 <td><c:out value="${c.pIVA}" /></td>
-			 <td><c:out value="${c.ragioneSociale}" /></td>
-			 <td><c:out value="${c.username}" /></td>
-		  </tr>
-		  
-		  <c:set var="i" value="${i+1}" scope="page" />
-		  </c:forEach>
-		  
-		</tbody>
+			</div>
+			<!-- content ends -->
+		</div>
+		<!--/#content.col-md-0-->
+	</div>
+	<!--/fluid-row-->
+	
+	<hr>
+	
+	<jsp:include page="../charisma/footer.jsp"></jsp:include>
 	
 	
-	</table>
+	<!--/.fluid-container-->
+	
+	<jsp:include page="../charisma/scriptEnd.jsp"></jsp:include>
+	
 
 </body>
 </html>
+
+
+<% } else {
+
+	session.invalidate();
+	response.sendRedirect("../login/login.jsp");
+	
+}
+%>
+

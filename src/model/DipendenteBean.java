@@ -1,10 +1,18 @@
 package model;
 
-import javax.persistence.Entity;
+
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.*;
+
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 
 import utility.IsValid;
 
 @Entity
+@PrimaryKeyJoinColumn(name="idUtente")
 public class DipendenteBean extends UtenteBean implements IsValid {
 
 	/**
@@ -12,18 +20,15 @@ public class DipendenteBean extends UtenteBean implements IsValid {
 	 */
 	private static final long serialVersionUID = 1L;
 	
+	
 	private String posizione;
 	private double stipendio;
 	
-	public DipendenteBean() {
-		setNome("");
-		setCognome("");
-		setUsername("");
-		setPassword("");
-		setRuolo(' ');
-		this.posizione = "";
-		this.stipendio = 0.0;
-	}
+	@OneToMany(mappedBy="dipendente",fetch=FetchType.EAGER,cascade=CascadeType.ALL)
+	@NotFound(action=NotFoundAction.IGNORE)
+	private Set<BustaPaga> listaBustePaga = new HashSet<BustaPaga>();
+	
+	public DipendenteBean() {}
 	
 	
 	public DipendenteBean(String nome, String cognome,
@@ -58,6 +63,16 @@ public class DipendenteBean extends UtenteBean implements IsValid {
 		return serialVersionUID;
 	}
 
+	public Set<BustaPaga> getListaBustePaga() {
+		return listaBustePaga;
+	}
+
+
+	public void setListaBustePaga(Set<BustaPaga> listaBustePaga) {
+		this.listaBustePaga = listaBustePaga;
+	}
+
+
 	@Override
 	public boolean isValid() {
 
@@ -74,5 +89,8 @@ public class DipendenteBean extends UtenteBean implements IsValid {
 		
 		return result;
 	}
+
+
+	
 
 }

@@ -1,5 +1,7 @@
 package serviziRubrica;
 
+import java.util.List;
+
 import model.*;
 import dao.RubricaDao;
 import dao.VoceDao;
@@ -28,6 +30,17 @@ public class ServiziRubrica {
 	}
 	
 	
+	/// LEGGI ID RUBRICA
+	public int leggiID(String username){
+		
+		int id = -1;
+		id = rDao.leggiId(username);
+		
+		return id;
+		
+	}
+	
+	
 	/// AGGIUNGI VOCE
 	public Voce aggiungiVoce(String nome, String cognome, String telefono, Rubrica rubrica) {
 		Voce v = null;
@@ -53,6 +66,18 @@ public class ServiziRubrica {
 
 		return v;
 	}
+	
+	
+	/// LEGGI TUTTE LE VOCI
+	public List<Voce> getTutteLeVoci(int id){
+		
+		List<Voce> voci = null;
+		voci = vDao.getTutteLeVoci(id);
+		
+		return voci;
+	}
+	
+	
 	
 	
 	/// MODIFICA VOCE

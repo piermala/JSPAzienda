@@ -38,10 +38,10 @@ public class UtenteDao {
 	
 	
 	
-	/// CERCA CON USERNAME
-	public boolean trovaUtenteConUsername(String username) {
+	/// CERCA CON ID
+	public UtenteBean trovaUtenteConId(long id) {
 		
-		boolean trovato = false;
+		UtenteBean u = null;
 		
 		Session session =HibernateUtil.openSession();
 		Transaction tx=null;
@@ -50,28 +50,24 @@ public class UtenteDao {
 			tx=session.getTransaction();
 			tx.begin();
 		
-			Query query=session.createQuery("from UtenteBean where username=:username");
-			query.setString("username", username);
+			Query query=session.createQuery("from UtenteBean where idUtente=:id");
+			query.setLong("id", id);
 			
-			int result=(int)query.uniqueResult();
+			u =(UtenteBean)query.uniqueResult();
 			
-			if (result > 0){
-				trovato = true;
-			}
-	
 			tx.commit();
 		}catch(Exception ex){
 			tx.rollback();
 		}finally{
 			session.close();
 		}
-		return trovato;
+		return u;
 		
 	}
 	
 	
 	
-	/// CERCA CON USERNAME 2
+	/// CERCA CON USERNAME 
 	public UtenteBean cercaConUsername(String username) {
 		
 		UtenteBean u = null;

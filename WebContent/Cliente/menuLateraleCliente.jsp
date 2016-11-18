@@ -8,13 +8,13 @@
 			<div class="nav-sm nav nav-stacked"></div>
 			<ul class="nav nav-pills nav-stacked main-menu">
 				<li class="nav-header">Main</li>
-				<li><a href="HomepageCliente.jsp"><i
+				<li><a href="../Cliente/HomepageCliente.jsp"><i
 						class="glyphicon glyphicon-home"></i><span> Home</span></a></li>
-				<li><a href="aggiungiVoce.jsp"><i
+				<li><a href="../Rubrica/aggiungiVoceCliente.jsp"><i
 						class="glyphicon glyphicon-plus"></i><span> Nuova Voce</span></a></li>
-				<li><a href="listaVoci.jsp"><i
+				<li><a href="../Rubrica/listaVociCliente.jsp"><i
 						class="glyphicon glyphicon-list"></i><span> Elenco Voci</span></a></li>
-				<li><a href="doLogout.jsp"><i
+				<li><a href="../login/doLogout.jsp"><i
 						class="glyphicon glyphicon-plus"></i><span>Logout</span></a></li>
 			</ul>
 
