@@ -31,7 +31,9 @@
 		<jsp:forward page="listaClienti.jsp"></jsp:forward>
 <%
     } else {
-     	response.sendRedirect("RegistrazioneCliente.jsp");
+    	%>
+       	<jsp:forward page="RegistrazioneCliente.jsp"></jsp:forward>
+       	<% 	
     }
     
   } else {

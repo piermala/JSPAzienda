@@ -9,7 +9,7 @@
     
     <%
     ServiziRubrica s = new ServiziRubrica();
-    long id = cliente.getIdUtente();
+    long id = s.leggiID(cliente.getUsername());
     Rubrica r = s.cercaRubrica(id);
     
     
@@ -18,7 +18,7 @@
     	if (voce.getNome() != null && voce.getTelefono().length() > 4){  /// controllo se nella voce siano stati inseriti almeno il nome ed un numero di telefono con più di 4 cifre
         	
         		s.aggiungiVoce(voce.getNome(), voce.getCognome(), voce.getTelefono(), r);
-    			response.sendRedirect("../Cliente/HomepageCliente.jsp");
+    			response.sendRedirect("../Rubrica/listaVociCliente.jsp");
         	
         } else {
     %>

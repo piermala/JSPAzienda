@@ -29,10 +29,6 @@ public class Prova {
 	}
 	
 	
-	@Test
-	public void cercaRubrica(){
-		Rubrica rubrica = serv.cercaRubrica("cilento");
-		assertNotNull(rubrica);
-	}
+	
 
 }

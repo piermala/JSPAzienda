@@ -9,8 +9,6 @@
     
     <%
     ServiziRubrica s = new ServiziRubrica();
-    //String username = dipendente.getUsername();
-    //long id = dipendente.getIdUtente();
     long id = s.leggiID(dipendente.getUsername());
     Rubrica r = s.cercaRubrica(id);
     

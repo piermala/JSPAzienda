@@ -8,6 +8,7 @@
     <jsp:useBean id="dipendente" class="model.DipendenteBean" scope="request"></jsp:useBean>
     <jsp:setProperty property="*" name="dipendente"/>
     <jsp:useBean id="admin" class="model.AdminBean" scope="session"></jsp:useBean>
+    <jsp:useBean id="message" class="utility.Message" scope="request"></jsp:useBean>
     
     <%
     if (admin.isValid()){
@@ -24,12 +25,15 @@
 	    	serv.createDipendente(dipendente.getNome(), dipendente.getCognome(), dipendente.getUsername(), passCodificata, dipendente.getPosizione(), dipendente.getStipendio());
 	    	servRubrica.aggiungiRubrica(dipendente.getUsername());
 	    	
-	    	response.sendRedirect("listaDipendenti.jsp");
+	    	message.setMessage("Dipendente aggiunto");
+	    	%>
+	    			<jsp:forward page="listaDipendenti.jsp"></jsp:forward>
+	    	<%
 	    	
 	    } else {
-   	%>
-   	<jsp:forward page="aggiungiDipendente.jsp"></jsp:forward>
-   	<% 	
+		   	%>
+		   	<jsp:forward page="aggiungiDipendente.jsp"></jsp:forward>
+		   	<% 	
     	}
     } else {
     	response.sendRedirect("../login/login.jsp");

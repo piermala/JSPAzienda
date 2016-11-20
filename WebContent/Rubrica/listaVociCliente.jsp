@@ -15,7 +15,7 @@ if(cliente.isValid()) {
 
 	ServiziRubrica servRubrica = new ServiziRubrica();
 	
-	int id = servRubrica.leggiID(cliente.getUsername());
+	long id = servRubrica.leggiID(cliente.getUsername());
 	
 	List<Voce> voci = servRubrica.getTutteLeVoci(id);
 	
