@@ -5,6 +5,7 @@ import java.util.List;
 
 import hibernateUtil.HibernateUtil;
 import model.ClienteBean;
+import model.DipendenteBean;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -91,6 +92,53 @@ public class ClienteDao {
 			session.close();
 		}
 		return clienti;			
+	}
+	
+	
+	
+	
+	/// MODIFICA CLIENTE
+	public void modificaCliente(ClienteBean c) {
+
+		Session session = HibernateUtil.openSession();
+		Transaction tx = null;
+
+		try {
+			tx = session.getTransaction();
+			tx.begin();
+
+			session.update(c);
+
+			tx.commit();
+
+		} catch (Exception ex) {
+			tx.rollback();
+		} finally {
+			session.close();
+		}
+	}
+
+	
+	
+	// ELIMINA CLIENTE
+	public void eliminaDipendente(ClienteBean c) {
+
+		Session session = HibernateUtil.openSession();
+		Transaction tx = null;
+
+		try {
+			tx = session.getTransaction();
+			tx.begin();
+
+			session.delete(c);
+
+			tx.commit();
+
+		} catch (Exception ex) {
+			tx.rollback();
+		} finally {
+			session.close();
+		}
 	}
 	
 }

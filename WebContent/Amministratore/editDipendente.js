@@ -1,14 +1,15 @@
-function confirmEdit(){
+function confirmEditDipendente(){
 	var result = confirm ("Vuoi modificare questo utente?");
 	
 	if (result == true){
-		document.getElementById("formModifiche").action = "doModificaDipendente.jsp";
+		
+		document.getElementById("formModifiche").action = "modificaDipendente.jsp";
 		document.getElementById("formModifiche").submit();
 	}
 	
 }
 
-function confirmDelete(){	
+function confirmDeleteDipendente(){	
 	
 	var result = confirm ("Vuoi davvero eliminare questo utente?");
 	
@@ -17,3 +18,5 @@ function confirmDelete(){
 		document.getElementById("formModifiche").submit();
 	}
 }
+
+

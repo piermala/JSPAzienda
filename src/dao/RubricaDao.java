@@ -10,7 +10,7 @@ import org.hibernate.Transaction;
 public class RubricaDao {
 
 	/// AGGIUNGI 
-	public Rubrica aggiungiRubrica(String nome){
+	public Rubrica aggiungiRubrica(String name){
 		Session session =HibernateUtil.openSession();
 		Transaction tx=null;
 		
@@ -21,9 +21,10 @@ public class RubricaDao {
 		tx.begin();
 		
 		r = new Rubrica();
-		r.setNome(nome);
+		r.setNome(name);
 		
 		session.persist(r);
+		
 		 tx.commit();
 		}catch(Exception ex){
 			tx.rollback();
@@ -36,7 +37,7 @@ public class RubricaDao {
 	
 	
 	/// LEGGI DA NOME E COGNOME
-	public Rubrica cercaRubrica(String nome){
+	public Rubrica cercaRubrica(long id){
 		
 		Session session =HibernateUtil.openSession();
 		Transaction tx=null;
@@ -47,8 +48,8 @@ public class RubricaDao {
 		tx=session.getTransaction();
 		tx.begin();
 		
-		Query query = session.createQuery("from Rubrica where nome=:nome");
-		query.setString("nome", nome);
+		Query query = session.createQuery("from Rubrica where id_rubrica=:id");
+		query.setLong("id", id);
 		
 		r = (Rubrica) query.uniqueResult();
 		
@@ -64,12 +65,12 @@ public class RubricaDao {
 	
 	
 	/// LEGGI ID DA RUBRICA
-	public int leggiId(String username){
+	public long leggiIdRubrica(String username){
 		
 		Session session =HibernateUtil.openSession();
 		Transaction tx=null;
 		
-		int id = -1;
+		long id = -1;
 
 		try{
 		tx=session.getTransaction();
@@ -100,6 +101,26 @@ public class RubricaDao {
 	
 	
 	/// ELIMINA
-	
+	public void eliminaRubrica(Rubrica r){
+		
+		Session session =HibernateUtil.openSession();
+		Transaction tx=null;
+
+		try{
+		tx=session.getTransaction();
+		tx.begin();
+		
+		session.delete(r);
+		
+//		Query query = session.createQuery("delete from Rubrica where nome=:nome");
+//		query.setString("nome", username);
+		
+		 tx.commit();
+		}catch(Exception ex){
+			tx.rollback();
+		}finally{
+			session.close();
+		}		
+	}
 	
 }

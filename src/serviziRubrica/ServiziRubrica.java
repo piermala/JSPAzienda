@@ -13,31 +13,36 @@ public class ServiziRubrica {
 	
 	
 	/// AGGIUNGI RUBRICA
-	public Rubrica aggiungiRubrica(String nome){
+	public Rubrica aggiungiRubrica(String name){
 		Rubrica r = null;
-		r = rDao.aggiungiRubrica(nome);
+		r = rDao.aggiungiRubrica(name);
 		
 		return r;
 	}
 	
 	
 	/// CERCA RUBRICA
-	public Rubrica cercaRubrica(String nome){
+	public Rubrica cercaRubrica(long id){
 		Rubrica r = null;
-		r = rDao.cercaRubrica(nome);
+		r = rDao.cercaRubrica(id);
 			
 		return r;
 	}
 	
 	
 	/// LEGGI ID RUBRICA
-	public int leggiID(String username){
+	public long leggiID(String username){
 		
-		int id = -1;
-		id = rDao.leggiId(username);
+		long id = -1;
+		id = rDao.leggiIdRubrica(username);
 		
-		return id;
-		
+		return id;		
+	}
+	
+	
+	/// ELIMINA RUBRICA
+	public void eliminaRubrica(Rubrica r){
+		rDao.eliminaRubrica(r);
 	}
 	
 	
@@ -69,7 +74,7 @@ public class ServiziRubrica {
 	
 	
 	/// LEGGI TUTTE LE VOCI
-	public List<Voce> getTutteLeVoci(int id){
+	public List<Voce> getTutteLeVoci(long id){
 		
 		List<Voce> voci = null;
 		voci = vDao.getTutteLeVoci(id);

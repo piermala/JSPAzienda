@@ -9,8 +9,10 @@
     
     <%
     ServiziRubrica s = new ServiziRubrica();
-    String username = dipendente.getUsername();
-    Rubrica r = s.cercaRubrica(username);
+    //String username = dipendente.getUsername();
+    //long id = dipendente.getIdUtente();
+    long id = s.leggiID(dipendente.getUsername());
+    Rubrica r = s.cercaRubrica(id);
     
     
     if (dipendente.isValid()){  /// controllo se è valido altrimenti torno al login

@@ -122,4 +122,49 @@ public class DipendenteDao {
 		return dipendenti;			
 	}
 	
+	
+	/// MODIFICA DIPENDENTE
+	public void modificaDipendente(DipendenteBean d) {
+
+		Session session = HibernateUtil.openSession();
+		Transaction tx = null;
+
+		try {
+			tx = session.getTransaction();
+			tx.begin();
+
+			session.update(d);
+
+			tx.commit();
+
+		} catch (Exception ex) {
+			tx.rollback();
+		} finally {
+			session.close();
+		}
+	}
+		
+		
+	
+	/// ELIMINA DIPENDENTE
+	public void eliminaDipendente(DipendenteBean d) {
+
+		Session session = HibernateUtil.openSession();
+		Transaction tx = null;
+
+		try {
+			tx = session.getTransaction();
+			tx.begin();
+
+			session.delete(d);
+			
+			tx.commit();
+
+		} catch (Exception ex) {
+			tx.rollback();
+		} finally {
+			session.close();
+		}
+	}
+	
 }

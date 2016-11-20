@@ -9,8 +9,8 @@
     
     <%
     ServiziRubrica s = new ServiziRubrica();
-    String username = cliente.getUsername();
-    Rubrica r = s.cercaRubrica(username);
+    long id = cliente.getIdUtente();
+    Rubrica r = s.cercaRubrica(id);
     
     
     if (cliente.isValid()){  /// controllo se è valido altrimenti torno al login

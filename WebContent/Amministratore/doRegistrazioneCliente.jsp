@@ -5,11 +5,15 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     
+    <jsp:useBean id="admin" class="model.AdminBean" scope="session"></jsp:useBean>
     <jsp:useBean id="cliente" class="model.ClienteBean" scope="request"></jsp:useBean>
     <jsp:setProperty property="*" name="cliente"/>
     <jsp:useBean id="message" class="utility.Message" scope="request"></jsp:useBean>
     
-    <%
+    
+    
+<% if (admin.isValid()){	
+
     Servizi serv = new Servizi();
     ServiziRubrica servRubrica = new ServiziRubrica();
     cliente.setRuolo('C');
@@ -21,13 +25,21 @@
     	String password = serv.codificaPassword(pass);
     	serv.createCliente(cliente.getNome(), cliente.getCognome(), cliente.getUsername(), password, cliente.getpIVA(), cliente.getRagioneSociale());
     	servRubrica.aggiungiRubrica(username);
-    	response.sendRedirect("HomepageAdmin.jsp");
+    	
+    	message.setMessage("Cliente aggiunto");
+%>
+		<jsp:forward page="listaClienti.jsp"></jsp:forward>
+<%
     } else {
-    %>
-    <jsp:forward page="RegistrazioneCliente.jsp"></jsp:forward>
-    <%
+     	response.sendRedirect("RegistrazioneCliente.jsp");
     }
-    %>
+    
+  } else {
+	  
+	  session.invalidate();
+	  response.sendRedirect("../login/login.jsp");
+  }
+%> 
      
     
     

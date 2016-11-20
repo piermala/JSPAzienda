@@ -16,7 +16,7 @@ public class Rubrica {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int id_rubrica;
+	private long id_rubrica;
 	private String nome;
 	
 	@OneToMany(mappedBy="rubrica",fetch=FetchType.EAGER,cascade=CascadeType.ALL)
@@ -24,11 +24,11 @@ public class Rubrica {
 	
 	
 	/// GETTERS AND SETTERS
-	public int getId_rubrica() {
+	public long getId_rubrica() {
 		return id_rubrica;
 	}
-	public void setId_rubrica(int id_rubrica) {
-		this.id_rubrica = id_rubrica;
+	public void setId_rubrica(long id) {
+		this.id_rubrica = id;
 	}
 	public String getNome() {
 		return nome;

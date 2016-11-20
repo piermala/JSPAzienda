@@ -6,11 +6,13 @@
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     
     <jsp:useBean id="admin" class="model.AdminBean" scope="session"></jsp:useBean>
+    <jsp:useBean id="message" class="utility.Message" scope="request"></jsp:useBean>
     
     <jsp:include page="../charisma/headerHtml.jsp"></jsp:include>
 	<jsp:include page="../charisma/navBar.jsp"></jsp:include>
    
-
+	<script type="text/javascript" src="editCliente.js"></script>
+	
 <% if (admin.isValid()) {%>
 	
 	<div class="ch-container">
@@ -28,6 +30,8 @@
 			<div id="content" class="col-lg-10 col-sm-10">
 				<!-- content starts -->
 			<div>
+			
+				<%=message.getMessage()%><br/><br/>
 
 				<table border="2">
 					<thead>
@@ -62,6 +66,13 @@
 								<td><c:out value="${c.pIVA}" /></td>
 								<td><c:out value="${c.ragioneSociale}" /></td>
 								<td><c:out value="${c.username}" /></td>
+								<td>
+								<form id="formModifiche" method="post"> 
+									<input type="hidden" value="${c.idUtente}" name="idCliente"/> 
+									<button type="button" id="editCliente" type="button" class="btn btn-info"><i class="glyphicon glyphicon-edit icon-white" onclick="confirmEditCliente()"> Edit </i></button>
+									<button type="button" id="deleteCliente" type="button" class="btn btn-danger"><i class="glyphicon glyphicon-trash icon-white" onclick="confirmDeleteCliente()"> Delete </i></button>
+								</form>
+								</td>
 							</tr>
 
 							<c:set var="i" value="${i+1}" scope="page" />

@@ -2,6 +2,7 @@
     pageEncoding="ISO-8859-1"%>
     
     <jsp:useBean id="admin" class="model.AdminBean" scope="session" />
+     <jsp:useBean id="message" class="utility.Message" scope="request" />
     <jsp:setProperty property="*" name="admin"/>
     
     <jsp:include page="../charisma/headerHtml.jsp"></jsp:include>
@@ -42,7 +43,6 @@
 				</form>
 
 
-
 			</div>
 				
 				<div align="center"><font size="4" color="red"></font></div>
@@ -50,8 +50,7 @@
 			
 			<div class=" row">
 	
-				<!--       devo scrivere per ogni pagina   -->
-	
+				
 			</div>
 			<!-- content ends -->
 		</div>

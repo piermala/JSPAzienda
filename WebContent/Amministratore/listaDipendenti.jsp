@@ -4,13 +4,14 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@ page isELIgnored="false"%>
     
     <jsp:useBean id="admin" class="model.AdminBean" scope="session"></jsp:useBean>
     
     <jsp:include page="../charisma/headerHtml.jsp"></jsp:include>
 	<jsp:include page="../charisma/navBar.jsp"></jsp:include>
 	
-	<script type="text/javascript" src="edit.js"></script>
+	<script type="text/javascript" src="editDipendente.js"></script>
 	
 
 <% if (admin.isValid()) { %>
@@ -20,7 +21,7 @@
 		
 				<ul class="breadcrumb">
 					<li><a href="#">Home</a></li>
-					<li><a href="#">Admin</a></li>	
+					<li><a href="#">Elenco dipendenti</a></li>	
 				</ul>
 	
 			<!-- left menu starts -->
@@ -34,21 +35,21 @@
 				<table border="2">
 					<thead>
 						<tr>
-							<td>N.</td>
-							<td>Nome</td>
-							<td>Cognome</td>
-							<td>Posizione</td>
-							<td>Stipendio</td>
-							<td>Username</td>
+							<th>N.</th>
+							<th>Nome</th>
+							<th>Cognome</th>
+							<th>Posizione</th>
+							<th>Stipendio</th>
+							<th>Username</th>
 						</tr>
 					</thead>
 
 					<%
 						Servizi serv = new Servizi();
 
-							List<DipendenteBean> dipendenti = serv.getTuttiDipendenti();
+						List<DipendenteBean> dipendenti = serv.getTuttiDipendenti();
 
-							session.setAttribute("dipendenti", dipendenti);
+						session.setAttribute("dipendenti", dipendenti);
 					%>
 
 
@@ -67,10 +68,10 @@
 								<td class="center"><c:out value="${d.stipendio}" /></td>
 								<td class="center"><c:out value="${d.username}" /></td>
 								<td>
-								<form id="formModifiche" method="get">
-									<input type="hidden" value="${d.idUtente}">
-									<button type="button" id="editCliente" type="button" class="btn btn-info"><i class="glyphicon glyphicon-edit icon-white" onclick="confirmEdit()"> Edit </i></button>
-									<button type="button" id="deleteCliente" type="button" class="btn btn-danger"><i class="glyphicon glyphicon-trash icon-white" onclick="confirmDelete()"> Delete </i></button>
+								<form id="formModifiche" method="post"> 
+									<input type="hidden" value="${d.idUtente}" name="id"/> 
+									<button type="button" id="editDipendenti" class="btn btn-info"><i class="glyphicon glyphicon-edit icon-white" onclick="confirmEditDipendente()"> Edit </i></button>
+									<button type="button" id="deleteDipendenti" class="btn btn-danger"><i class="glyphicon glyphicon-trash icon-white" onclick="confirmDeleteDipendente()"> Delete </i></button>
 								</form>
 								</td>
 							</tr>

@@ -91,7 +91,7 @@ public class VoceDao {
 	}
 	
 	/// LEGGI TUTTE LE VOCI
-	public List<Voce> getTutteLeVoci(int id) {
+	public List<Voce> getTutteLeVoci(long id) {
 		Session session = HibernateUtil.openSession();
 		Transaction tx = null;
 
@@ -103,7 +103,7 @@ public class VoceDao {
 
 			Query query = session
 					.createQuery("from Voce where Rubrica_id_rubrica=:id");
-			query.setParameter("id", id);
+			query.setLong("id", id);
 
 			v = (List<Voce>) query.list();
 

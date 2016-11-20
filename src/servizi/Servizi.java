@@ -104,8 +104,21 @@ public class Servizi {
 		return clienti;
 		
 	}
+	
+	
+	/// MODIFICA DIPENDENTE
+	public void modificaCliente(ClienteBean c) {
+		cDao.modificaCliente(c);
+	}
+
+	
+	/// ELIMINA DIPENDENTE
+	public void eliminaCliente(ClienteBean c) {
+		cDao.eliminaDipendente(c);
+	}
 		
 		
+	
 	
 	/// AGGIUNGI DIPENDENTE
 	public DipendenteBean createDipendente(String nome, String cognome, String username, String password, String posizione, double stipendio)
@@ -149,6 +162,17 @@ public class Servizi {
 		return dipendenti;
 	}
 	
+	
+	
+	/// MODIFICA DIPENDENTE
+	public void modificaDipendente(DipendenteBean d){
+		dDao.modificaDipendente(d);
+	}
+	
+	/// ELIMINA DIPENDENTE
+	public void eliminaDipendente(DipendenteBean d){
+		dDao.eliminaDipendente(d);
+	}
 	
 	
 	/// CREA BUSTA PAGA
