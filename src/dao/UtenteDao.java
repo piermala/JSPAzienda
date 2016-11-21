@@ -1,6 +1,7 @@
 package dao;
 
 import hibernateUtil.HibernateUtil;
+import model.DipendenteBean;
 import model.UtenteBean;
 
 import org.hibernate.Query;
@@ -91,5 +92,28 @@ public class UtenteDao {
 			session.close();
 		}
 		return u;		
+	}
+	
+	
+	
+	/// ELIMINA UTENTE
+	public void eliminaUtente(UtenteBean u) {
+
+		Session session = HibernateUtil.openSession();
+		Transaction tx = null;
+
+		try {
+			tx = session.getTransaction();
+			tx.begin();
+
+			session.delete(u);
+			
+			tx.commit();
+
+		} catch (Exception ex) {
+			tx.rollback();
+		} finally {
+			session.close();
+		}
 	}
 }

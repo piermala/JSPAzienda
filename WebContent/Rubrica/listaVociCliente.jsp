@@ -8,7 +8,9 @@
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     
     <jsp:useBean id="cliente" class="model.ClienteBean" scope="session"></jsp:useBean>
+    <jsp:useBean id="message" class="utility.Message" scope="request"></jsp:useBean>
     
+    <script type="text/javascript" src="edit.js"></script>
 <%
 
 if(cliente.isValid()) {
@@ -26,6 +28,7 @@ if(cliente.isValid()) {
 	<jsp:include page="../charisma/headerHtml.jsp"></jsp:include>
 	<jsp:include page="../charisma/navBar.jsp"></jsp:include>
 	
+	<script type="text/javascript" src="edit.js"></script>
 
 <!-- da qui -->
 <div class="ch-container">
@@ -44,15 +47,21 @@ if(cliente.isValid()) {
 				<!-- content starts -->
 				<div>
 	
-					<div id="elencoVoci">
+					<div class="box-content">
+					<div align="center">
+						<font size="4" color="red" class="messageConfirmed"><%=message.getMessage()%></font>
+					</div>
+				</div>
 
-					<table border="2">
+
+				<table border="3" class="table table-striped table-bordered bootstrap-datatable datatable responsive">
 						<thead>
 							<tr>
-								<td>N.</td>
-								<td>Nome</td>
-								<td>Cognome</td>
-								<td>Telefono</td>
+								<th>N.</th>
+								<th>Nome</th>
+								<th>Cognome</th>
+								<th>Telefono</th>
+								<th>Comandi</th>
 							</tr>
 						</thead>
 
@@ -67,17 +76,27 @@ if(cliente.isValid()) {
 									<td><c:out value="${i}" /></td>
  									<td><c:out value="${v.nome}" /></td> 
  									<td><c:out value="${v.cognome}" /></td> 
- 									<td><c:out value="${v.telefono}" /></td> 
-								</tr> 
+ 									<td><c:out value="${v.telefono}" /></td>								
+									<td>
+										<form id="formModifiche" method="post" action="modificaVoce.jsp"> 
+											<input type="hidden" value="${v.id_voce}" name="id_voce"/> 
+											<button type="submit" id="editVoce" class="btn btn-info" ><i class="glyphicon glyphicon-edit icon-white"> Edit </i></button>
+										</form> 
+										
+										<form id="formElimina" method="post" action="doEliminaVoce.jsp"> 
+											<input type="hidden" value="${v.id_voce}" name="id_voce"/> 
+											<button type="submit" id="deleteVoce" class="btn btn-danger" onclick="confirmDeleteVoce()"><i class="glyphicon glyphicon-trash icon-white"> Delete </i></button>
+										</form> 
+									
+									</td>
+								
+								</tr>
 
 								<c:set var="i" value="${i+1}" scope="page" />
 
 							</c:forEach>
 							
 					</table>
-
-
-				</div>
 				
 				<div align="center"><font size="4" color="red"></font></div>
 			</div>

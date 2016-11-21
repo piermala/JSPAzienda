@@ -13,9 +13,9 @@
     Rubrica r = s.cercaRubrica(id);
     
     
-    if (cliente.isValid()){  /// controllo se è valido altrimenti torno al login
+    if (cliente.isValid()){  
     	
-    	if (voce.getNome() != null && voce.getTelefono().length() > 4){  /// controllo se nella voce siano stati inseriti almeno il nome ed un numero di telefono con più di 4 cifre
+    	if (voce.getNome() != null && voce.getTelefono().length() > 4){  
         	
         		s.aggiungiVoce(voce.getNome(), voce.getCognome(), voce.getTelefono(), r);
     			response.sendRedirect("../Rubrica/listaVociCliente.jsp");

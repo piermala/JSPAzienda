@@ -26,17 +26,21 @@
 				<!-- content starts -->
 				<div>
 	
-					<div id="formRegistrazioneVoce">
+					<div id="formRegistrazioneVoce" align="center">
   
 						<form action="doAggiungiVoceCliente.jsp" method="post">
-						  Nome <input type="text" name="nome" /><br>
-						  Cognome <input type="text" name="cognome" /><br>
-						  Telefono <input type="number" name="telefono" /><br>
-						  <input type="submit" value="Aggiungi"/>
+						  <label>Nome</label><br>
+						  <input type="text" name="nome" placeholder="Inserisci il nome" required/><br>
+						  <label>Cognome</label><br>
+						  <input type="text" name="cognome" placeholder="Inserisci il cognome" required/><br>
+						  <label>Telefono</label><br>
+						  <input type="number" name="telefono" placeholder="Inserisci il numero di telefono" required/><br><br>
+						  
+						  <input type="submit" value="Aggiungi" class="btn btn-primary"/><br><br>
 						</form>
 						
 						<form action="../Cliente/HomepageCliente.jsp" method="post">
-						  <input type="submit" value="Annulla"/>	
+						  <input type="submit" value="Annulla" class="btn btn-primary"/>	
 						</form>
 						
 					</div>

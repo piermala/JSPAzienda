@@ -1,6 +1,5 @@
 package model;
 
-import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,15 +7,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
-import servizi.Servizi;
-import dao.DipendenteDao;
 
 @Entity
 public class BustaPaga {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int id_bustaPaga;
+	private long id_bustaPaga;
 	
 	@ManyToOne
 	private DipendenteBean dipendente;
@@ -26,10 +23,10 @@ public class BustaPaga {
 	
 	
 	
-	public int getId_bustaPaga() {
+	public long getId_bustaPaga() {
 		return id_bustaPaga;
 	}
-	public void setId_bustaPaga(int id_bustaPaga) {
+	public void setId_bustaPaga(long id_bustaPaga) {
 		this.id_bustaPaga = id_bustaPaga;
 	}
 	public DipendenteBean getDipendente() {
@@ -52,7 +49,7 @@ public class BustaPaga {
 	}
 	
 	
-	public BustaPaga(int id_bustaPaga, DipendenteBean dipendente, String data,
+	public BustaPaga(long id_bustaPaga, DipendenteBean dipendente, String data,
 			double importo) {
 		super();
 		this.id_bustaPaga = id_bustaPaga;
@@ -67,10 +64,10 @@ public class BustaPaga {
 	public boolean isValid(){
 		boolean valid = false;
 		
-		Servizi s = new Servizi();
-		List<DipendenteBean> dipendenti = s.getTuttiDipendenti();
+		//Servizi s = new Servizi();
+		//List<DipendenteBean> dipendenti = s.getTuttiDipendenti();
 		
-		if (/*dipendenti.contains(dipendente) && */dipendente.getStipendio() <= importo){
+		if (dipendente.getStipendio() <= importo){
 			valid = true;
 		}
 		

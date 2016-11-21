@@ -6,11 +6,15 @@
     <jsp:include page="../charisma/headerHtml.jsp"></jsp:include>
 	<jsp:include page="../charisma/navBar.jsp"></jsp:include>
  
-
 <% if (admin.isValid()) { %>
 
 	<div class="ch-container">
 		<div class="row">
+		
+			<ul class="breadcrumb">
+				<li><a href="HomepageAdmin.jsp">Home</a></li>
+				<li><a href="#">Aggiungi Dipendente</a></li>	
+			</ul>
 	
 			<!-- left menu starts -->
 			<jsp:include page="./menuLateraleAdmin.jsp"></jsp:include>
@@ -20,42 +24,40 @@
 				<!-- content starts -->
 				<div align="center">
 	
-					<h1>Aggiungi dipendente</h1> 
+				<h1>Aggiungi dipendente</h1> 
 
-
-
-				<form action="doAggiungiDipendente.jsp" method="post">
-					Nome <input type="text" name="nome" /><br> 
-					Cognome <input type="text" name="cognome" /><br> 
-					Posizione <input type="text" name="posizione" /><br> 
-					Stipendio <input type="text" name="stipendio" /><br> 
-					Username <input	type="text" name="username" /><br> 
-					Password <input type="password" name="password" /><br> 
-					<input type="submit" value="Aggiungi" /><br>
+				<form class="form-horizontal" action="doAggiungiDipendente.jsp" method="post">
+					<label>Nome</label><br>
+					<input type="text" name="nome" placeholder="Inserisci il nome" required/><br> 
+					<label>Cognome</label><br> 
+					<input type="text" name="cognome" placeholder="Inserisci il cognome" required/><br> 
+					<label>Posizione</label><br> 
+					<input type="text" name="posizione" placeholder="Inserisci la posizione" required/><br> 
+					<label>Stipendio</label><br> 
+					<input type="number" name="stipendio" id="stipendio" placeholder="Inserisci lo stipendio" required/><br> 
+					<label>Username</label><br> 
+					<input	type="text" name="username" placeholder="Inserisci lo username" required/><br> 
+					<label>Password</label><br> 
+					<input type="password" name="password" placeholder="Inserisci la password" required/><br><br>
+					<input type="submit" value="Aggiungi" class="btn btn-primary" /><br><br>
 				</form>
 
 				<form action="HomepageAdmin.jsp" method="post">
-					<input type="submit" value="annulla" /><br>
+					<input type="submit" value="Annulla" class="btn btn-primary"/><br>
 				</form>
 
 
 
 			</div>
-			
-			
-				<ul class="breadcrumb">
-					<li><a href="#">Home</a></li>
-					<li><a href="#">Aggiungi Dipendente</a></li>
-	
-				</ul>
-				<div align="center"><font size="4" color="red"></font></div>
+				
+				
 			</div>
 			
 			<div class=" row">
 	
-				<!--       devo scrivere per ogni pagina   -->
 	
 			</div>
+			
 			<!-- content ends -->
 		</div>
 		<!--/#content.col-md-0-->

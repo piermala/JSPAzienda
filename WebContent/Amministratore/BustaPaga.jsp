@@ -18,7 +18,7 @@
 		
 				<ul class="breadcrumb">
 					<li><a href="#">Home</a></li>
-					<li><a href="#">Busta Paga</a></li>
+					<li><a href="#">Emissione Busta Paga</a></li>
 				</ul>
 	
 			<!-- left menu starts -->
@@ -30,15 +30,13 @@
 				<div>
 	
 					
-				<div align="center"><font size="4" color="red"></font></div>
-			</div>
-			
-			<div class="row">
-			
-				<form action="doBustaPaga.jsp" method="post">
+				<div align="center">
+				
+					<form class="form-horizontal" action="doBustaPaga.jsp" method="post">
 				
 				
-					Dipendente: <select name="idUtente" id="dipendente" style="width:200px;">
+					<label>Dipendente:</label><br>
+					<select name="idUtente" id="dipendente" style="width:200px;">
 					
 					<%
 					Servizi s = new Servizi();
@@ -50,22 +48,34 @@
 					
 				
 					<c:forEach items="${dipendenti}" var="u">
-						<option value="${u.idUtente}"><c:out value="${u.nome} ${u.cognome}"/></option>							
+						<option value="${u.idUtente}" ><c:out value="${u.nome} ${u.cognome}"/></option>							
 					</c:forEach>
 					
 					
 					</select>
 					<br>
 					
-					Data: <input type="text" name="data" id="data" /> <br>
-					Importo: <input type="text" name="importo" id="importo" /> <br>
+					<label>Data:</label><br>
+					<input type="text" name="data" id="data" placeholder="Inserisci la data"/> <br>
+					
+					<label>Importo:</label><br>
+					<input type="text" name="importo" id="importo" placeholder="Inserisci l'importo per l'utente"/> <br><br>
 					
 					
-					<button type="submit" name="registra">Registra</button>					
+					<button type="submit" name="registra" class="btn btn-primary">Registra</button><br><br>			
 				
 				</form>
-	
-
+				
+				<form action="HomepageAdmin.jsp">
+					<button type="submit" name="annulla" class="btn btn-primary">Annulla</button>
+				</form>
+				
+				</div>
+				
+			</div>
+			
+			<div class="row">
+			
 			</div>
 			<!-- content ends -->
 		</div>

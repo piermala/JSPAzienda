@@ -5,8 +5,9 @@
     pageEncoding="ISO-8859-1"%>
     
     <jsp:useBean id="bustaPaga" class="model.BustaPaga" scope="session"></jsp:useBean>
-    <jsp:setProperty property="*" name="bustaPaga"/>
     <jsp:useBean id="admin" class="model.AdminBean" scope="session"></jsp:useBean>
+    <jsp:setProperty property="*" name="bustaPaga"/>
+    <jsp:useBean id="message" class="utility.Message" scope="request"></jsp:useBean>
     
 <%   if (admin.isValid()){
 	
@@ -19,11 +20,11 @@
 		bustaPaga.setDipendente(dipendente);
 		
 		
-		if (bustaPaga.isValid()){				
+		if (bustaPaga.isValid()){			
 			
+			s.creaBustaPaga(bustaPaga);		
 			
-			s.creaBustaPaga(bustaPaga);			
-			
+			message.setMessage("Busta paga aggiunta!");
 			
 			%>
 			<jsp:forward page="elencoBustePaga.jsp"></jsp:forward>	

@@ -7,11 +7,19 @@
     <%@ page isELIgnored="false"%>
     
     <jsp:useBean id="admin" class="model.AdminBean" scope="session"></jsp:useBean>
+    <jsp:useBean id="message" class="utility.Message" scope="request"></jsp:useBean>
     
     <jsp:include page="../charisma/headerHtml.jsp"></jsp:include>
 	<jsp:include page="../charisma/navBar.jsp"></jsp:include>
 	
-	<script type="text/javascript" src="editDipendente.js"></script>
+	<script type="text/javascript" src="edit.js"></script>
+	
+	<style>
+		.messageConfirmed {
+			font-family: Verdana;
+			size: 24px;
+		}
+	</style>
 	
 
 <% if (admin.isValid()) { %>
@@ -31,8 +39,15 @@
 		<div id="content" class="col-lg-10 col-sm-10">
 			<!-- content starts -->
 			<div>
+			
+				
+				<div class="box-content">
+					<div align="center">
+						<font size="4" color="red" class="messageConfirmed"><%=message.getMessage()%></font>
+					</div>
+				</div>
 
-				<table border="2">
+				<table border="3" class="table table-striped table-bordered bootstrap-datatable datatable responsive">
 					<thead>
 						<tr>
 							<th>N.</th>
@@ -41,6 +56,7 @@
 							<th>Posizione</th>
 							<th>Stipendio</th>
 							<th>Username</th>
+							<th>Comandi</th>
 						</tr>
 					</thead>
 
@@ -49,7 +65,8 @@
 
 						List<DipendenteBean> dipendenti = serv.getTuttiDipendenti();
 
-						session.setAttribute("dipendenti", dipendenti);
+						session.setAttribute("dipendenti", dipendenti);						
+						
 					%>
 
 
@@ -66,13 +83,17 @@
 								<td class="center"><c:out value="${d.cognome}" /></td>
 								<td class="center"><c:out value="${d.posizione}" /></td>
 								<td class="center"><c:out value="${d.stipendio}" /></td>
-								<td class="center"><c:out value="${d.username}" /></td>
+								<td class="center"><c:out value="${d.username}"/></td>
 								<td>
-								<form id="formModifiche" method="post"> 
-									<input type="hidden" value="${d.idUtente}" name="id"/> 
-									<button type="button" id="editDipendenti" class="btn btn-info"><i class="glyphicon glyphicon-edit icon-white" onclick="confirmEditDipendente()"> Edit </i></button>
-									<button type="button" id="deleteDipendenti" class="btn btn-danger"><i class="glyphicon glyphicon-trash icon-white" onclick="confirmDeleteDipendente()"> Delete </i></button>
-								</form>
+									<form id="formModifiche" method="post" action="modificaDipendente.jsp"> 
+										<input type="hidden" value="${d.idUtente}" name="idUtente"/> 
+										<button type="submit" id="editDipendenti" class="btn btn-info" ><i class="glyphicon glyphicon-edit icon-white"> Edit </i></button>
+									</form> 
+									
+									<form id="formElimina" method="post" action="doEliminaDipendente.jsp"> 
+										<input type="hidden" value="${d.idUtente}" name="idUtente"/> 
+										<button type="submit" id="deleteDipendenti" class="btn btn-danger" onclick="confirmDeleteDipendente()"><i class="glyphicon glyphicon-trash icon-white"> Delete </i></button>
+									</form> 									
 								</td>
 							</tr>
 

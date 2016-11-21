@@ -1,7 +1,7 @@
  <%@page import="model.Rubrica"%>
 <%@page import="serviziRubrica.ServiziRubrica"%>
 <%@ page import="servizi.Servizi" %>
-  <%@ page import="model.ClienteBean" %>
+  <%@ page import="model.BustaPaga" %>
  <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     
@@ -11,24 +11,18 @@
 <% if (admin.isValid()) { 
 	
 	Servizi s = new Servizi();
-	ServiziRubrica sr = new ServiziRubrica();
 
-	long id = Long.parseLong(request.getParameter("idUtente"));
+	long id = Long.parseLong(request.getParameter("id_bustaPaga"));
 	
-	ClienteBean c = (ClienteBean)s.cercaUtenteConId(id);
-	
-	long idRubrica = sr.leggiID(c.getUsername());
-	Rubrica r = sr.cercaRubrica(idRubrica);
+	BustaPaga bp = (BustaPaga)s.leggiBustaPagaDaId(id);
 
-	s.eliminaCliente(c);
+	s.eliminaBustaPaga(bp);
 	
-	sr.eliminaRubrica(r);
-	
-	message.setMessage("Cliente eliminato!");
+	message.setMessage("Busta paga eliminato!");
 	
 %>
 
-	<jsp:forward page="listaClienti.jsp"></jsp:forward>
+	<jsp:forward page="elencoBustePaga.jsp"></jsp:forward>
 
 <%
 } else {

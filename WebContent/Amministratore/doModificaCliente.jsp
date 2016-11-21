@@ -1,4 +1,4 @@
-<%@page import="model.DipendenteBean"%>
+<%@page import="model.ClienteBean"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     <%@ page import="servizi.Servizi" %>
@@ -11,20 +11,20 @@
 	Servizi s = new Servizi();
 	
 	long id = Long.parseLong(request.getParameter("id_utente"));
-	DipendenteBean d = (DipendenteBean)s.cercaUtenteConId(id);
+	ClienteBean c = (ClienteBean)s.cercaUtenteConId(id);
 	
-	d.setNome(request.getParameter("nome1"));
-	d.setCognome(request.getParameter("cognome1"));
-	d.setPosizione(request.getParameter("posizione1"));
-	d.setStipendio(Double.parseDouble(request.getParameter("stipendio1")));
+	c.setNome(request.getParameter("nome1"));
+	c.setCognome(request.getParameter("cognome1"));
+	c.setRagioneSociale(request.getParameter("ragioneSociale1"));
 	
-	s.modificaDipendente(d);
+	s.modificaCliente(c);	
 	
-	message.setMessage("Utente modificato!");
+	
+	message.setMessage("Cliente modificato!");
 		
 %>	
 
-	<jsp:forward page="listaDipendenti.jsp"></jsp:forward>
+	<jsp:forward page="listaClienti.jsp"></jsp:forward>
 
 <%
 } else {	

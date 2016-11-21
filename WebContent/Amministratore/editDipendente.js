@@ -15,7 +15,7 @@ function confirmDeleteDipendente(){
 	
 	if (result == true){
 		document.getElementById("formModifiche").action = "doEliminaDipendente.jsp";
-		document.getElementById("formModifiche").submit();
+		//document.getElementById("formModifiche").submit();
 	}
 }
 

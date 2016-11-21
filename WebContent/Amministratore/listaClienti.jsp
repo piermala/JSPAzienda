@@ -11,7 +11,14 @@
     <jsp:include page="../charisma/headerHtml.jsp"></jsp:include>
 	<jsp:include page="../charisma/navBar.jsp"></jsp:include>
    
-	<script type="text/javascript" src="editCliente.js"></script>
+	<script type="text/javascript" src="edit.js"></script>
+	
+	<style>
+		.messageConfirmed {
+			font-family: Verdana;
+			size: 24px;
+		}
+	</style>
 	
 <% if (admin.isValid()) {%>
 	
@@ -31,24 +38,30 @@
 				<!-- content starts -->
 			<div>
 			
-				<%=message.getMessage()%><br/><br/>
+				<div class="box-content">
+					<div align="center">
+						<font size="4" color="red" class="messageConfirmed"><%=message.getMessage()%></font>
+					</div>
+				</div>
 
-				<table border="2">
+
+				<table border="3" class="table table-striped table-bordered bootstrap-datatable datatable responsive">
 					<thead>
 						<tr>
-							<th>Num.</th>
+							<th>N.</th>
 							<th>Nome</th>
 							<th>Cognome</th>
 							<th>Partita IVA</th>
 							<th>Ragione sociale</th>
 							<th>Username</th>
+							<th>Comandi</th>
 						<tr>
 					</thead>
 
 					<tbody>
 
 						<%
-							Servizi serv = new Servizi();
+								Servizi serv = new Servizi();
 
 								List<ClienteBean> clienti = serv.getTuttiClienti();
 
@@ -67,11 +80,16 @@
 								<td><c:out value="${c.ragioneSociale}" /></td>
 								<td><c:out value="${c.username}" /></td>
 								<td>
-								<form id="formModifiche" method="post"> 
-									<input type="hidden" value="${c.idUtente}" name="idCliente"/> 
-									<button type="button" id="editCliente" type="button" class="btn btn-info"><i class="glyphicon glyphicon-edit icon-white" onclick="confirmEditCliente()"> Edit </i></button>
-									<button type="button" id="deleteCliente" type="button" class="btn btn-danger"><i class="glyphicon glyphicon-trash icon-white" onclick="confirmDeleteCliente()"> Delete </i></button>
-								</form>
+									<form id="formModifiche" method="post" action="modificaCliente.jsp"> 
+										<input type="hidden" value="${c.idUtente}" name="idUtente"/> 
+										<button type="submit" id="editCliente" class="btn btn-info" ><i class="glyphicon glyphicon-edit icon-white"> Edit </i></button>
+									</form> 
+									
+									<form id="formElimina" method="post" action="doEliminaCliente.jsp"> 
+										<input type="hidden" value="${c.idUtente}" name="idUtente"/> 
+										<button type="submit" id="deleteDipendenti" class="btn btn-danger" onclick="confirmDeleteCliente()"><i class="glyphicon glyphicon-trash icon-white"> Delete </i></button>
+									</form> 
+								
 								</td>
 							</tr>
 

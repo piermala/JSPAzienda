@@ -1,21 +1,21 @@
-<%@page import="model.DipendenteBean"%>
- <%@ page import="servizi.Servizi" %>
+<%@page import="serviziRubrica.ServiziRubrica"%>
+<%@page import="model.Voce"%>
+<%@ page import="servizi.Servizi" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
    
     
-    <jsp:useBean id="admin" class="model.AdminBean" scope="session"></jsp:useBean>
+    <jsp:useBean id="cliente" class="model.ClienteBean" scope="session"></jsp:useBean>
     
      <jsp:include page="../charisma/headerHtml.jsp"></jsp:include>
 	 <jsp:include page="../charisma/navBar.jsp"></jsp:include>
 	
-<% if (admin.isValid()) {
+<% if (cliente.isValid()) {
 
-	Servizi s = new Servizi();
+	ServiziRubrica s = new ServiziRubrica();
 	
-	long id = Long.parseLong(request.getParameter("idUtente"));	
-	DipendenteBean d = (DipendenteBean)s.cercaUtenteConId(id);
-	
+	long id = Long.parseLong(request.getParameter("id_voce"));	
+	Voce v = (Voce)s.cercaVoce(id);
 		
 %>	
 
@@ -24,25 +24,25 @@
 		
 				<ul class="breadcrumb">
 					<li><a href="HomepageAdmin.jsp">Home</a></li>
-					<li><a href="#">Modifica Dipendente</a></li>	
+					<li><a href="#">Modifica Cliente</a></li>	
 				</ul>
+				
 	
 			<!-- left menu starts -->
-			<jsp:include page="menuLateraleAdmin.jsp"></jsp:include>
+			<jsp:include page="../Cliente/menuLateraleCliente.jsp"></jsp:include>
 			<!-- left menu ends -->
 			
 			
 			<div class="box-content" align="center">
 							<font size="4" color="red"></font>
-								<form class="form-horizontal" action="doModificaDipendente.jsp"
+								<form class="form-horizontal" action="doModificaVoce.jsp"
 									method="post">
 									
 									<div class="form-group">
-										<label>Nome</label><br> <input type="text" name="nome1" value=<%=d.getNome()%> ><br> 
-										<label>Cognome</label><br><input type="text" name="cognome1" value=<%=d.getCognome()%>><br> 
-										<label>Posizione</label><br> <input type="text" name="posizione1" value=<%=d.getPosizione()%>><br> 
-										<label>Stipendio</label><br><input type="text" name="stipendio1" value=<%=d.getStipendio()%> ><br> 
-										<br><input type="hidden" value=<%=d.getIdUtente()%>	name="id_utente" ><br> 
+										<label>Nome</label><br> <input type="text" name="nome" value=<%=v.getNome()%> ><br> 
+										<label>Cognome</label><br><input type="text" name="cognome" value=<%=v.getCognome()%>><br> 
+										<label>Telefono</label><br><input type="text" name="telefono" value=<%=v.getTelefono()%> ><br> 
+										<br><input type="hidden" value=<%=v.getId_voce()%> name="id_voce" ><br> 
 										<input type="submit"
 											class="btn btn-primary" value="Modifica"> <br>
 									</div>

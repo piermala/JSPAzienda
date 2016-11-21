@@ -36,7 +36,6 @@
 			
 			<div class=" row">
 	
-				<!--       devo scrivere per ogni pagina   -->
 	
 			</div>
 			<!-- content ends -->
@@ -46,6 +45,8 @@
 	<!--/fluid-row-->
 	
 	<hr>
+	
+	
 	
 	<jsp:include page="../charisma/footer.jsp"></jsp:include>
 	

@@ -38,6 +38,36 @@ public class BustaDao {
 	
 	
 	
+	/// LEGGI BUSTA PAGA DA ID
+	public BustaPaga getBustaPaga(long id) {
+
+		BustaPaga bustaPaga = null;
+
+		Session session = HibernateUtil.openSession();
+		Transaction tx = null;
+
+		try {
+			tx = session.getTransaction();
+			tx.begin();
+
+			Query query = (Query) session.createQuery("from BustaPaga where id_bustapaga=:id");
+			query.setLong("id", id);
+
+			bustaPaga = (BustaPaga) query.uniqueResult();
+			
+			tx.commit();
+
+		} catch (Exception ex) {
+			tx.rollback();
+		} finally {
+			session.close();
+		}
+
+		return bustaPaga;		
+	}
+	
+	
+	
 	/// TUTTE LE BUSTE PAGHE
 	public List<BustaPaga> getBustePaga() {
 
@@ -91,7 +121,53 @@ public class BustaDao {
 			session.close();
 		}
 
-		return buste;
-		
+		return buste;		
 	}
+	
+	
+	
+	/// MODIFICA
+	public void modificaBustaPaga(BustaPaga bPaga) {
+
+		Session session = HibernateUtil.openSession();
+		Transaction tx = null;
+
+		try {
+			tx = session.getTransaction();
+			tx.begin();
+
+			session.update(bPaga);
+
+			tx.commit();
+
+		} catch (Exception ex) {
+			tx.rollback();
+		} finally {
+			session.close();
+		}
+	}
+	
+	
+	/// ELIMINA
+	public void eliminaBustaPaga(BustaPaga bPaga) {
+
+		Session session = HibernateUtil.openSession();
+		Transaction tx = null;
+
+		try {
+			tx = session.getTransaction();
+			tx.begin();
+
+			session.delete(bPaga);
+
+			tx.commit();
+
+		} catch (Exception ex) {
+			tx.rollback();
+		} finally {
+			session.close();
+		}
+	}
+	
+
 }

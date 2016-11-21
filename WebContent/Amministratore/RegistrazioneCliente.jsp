@@ -14,7 +14,7 @@
 		
 				<ul class="breadcrumb">
 					<li><a href="#">Home</a></li>
-					<li><a href="#">Admin</a></li>
+					<li><a href="#">Registra nuovo cliente</a></li>
 	
 				</ul>
 	
@@ -28,25 +28,29 @@
 
 
 				<h1>Registra nuovo cliente</h1> <br>
-				<form action="doRegistrazioneCliente.jsp" method="post">
-					Nome <input type="text" name="nome" /><br> 
-					Cognome <input type="text" name="cognome" /><br> 
-					Partita IVA <input type="text" name="pIVA" /><br> 
-					Ragione Sociale <input type="text" name="ragioneSociale" /><br> 
-					Username <input type="text" name="username" /><br> 
-					Password <input type="password" name="password" /><br>
-					<input type="submit" value="registra">
+				<form class="form-horizontal" action="doRegistrazioneCliente.jsp" method="post">
+					<label>Nome</label><br>
+					<input type="text" name="nome" placeholder="Inserisci il nome" required /><br> 
+					<label>Cognome</label><br>
+					<input type="text" name="cognome" placeholder="Inserisci il cognome" required/><br> 
+					<label>Partita IVA</label><br>
+					<input type="text" name="pIVA" placeholder="Inserisci la partita iva" required/><br> 
+					<label>Ragione Sociale</label><br>
+					<input type="text" name="ragioneSociale" placeholder="Inserisci la ragione sociale" required/><br> 
+					<label>Username</label><br>
+					<input type="text" name="username" placeholder="Inserisci lo username" required/><br> 
+					<label>Password</label><br>
+					<input type="password" name="password" placeholder="Inserisci la password" required/><br><br>
+					<input type="submit" value="Registra cliente" class="btn btn-primary"><br><br>
 				</form>
 
 				<form action="HomepageAdmin.jsp" method="post">
-					<input type="submit" value="annulla" /><br>
+					<input type="submit" value="Annulla" class="btn btn-primary"/><br>
 				</form>
 
-
 			</div>
-				
-				<div align="center"><font size="4" color="red"></font></div>
-			</div>
+			
+		</div>
 			
 			<div class=" row">
 	
@@ -70,7 +74,9 @@
 </body>
 </html>
 
-<%} else {
+<%
+
+} else {
 
 	session.invalidate();
 	response.sendRedirect("../login/login.jsp");

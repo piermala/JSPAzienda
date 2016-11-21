@@ -1,4 +1,4 @@
-<%@page import="model.DipendenteBean"%>
+<%@page import="model.ClienteBean"%>
  <%@ page import="servizi.Servizi" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -14,7 +14,7 @@
 	Servizi s = new Servizi();
 	
 	long id = Long.parseLong(request.getParameter("idUtente"));	
-	DipendenteBean d = (DipendenteBean)s.cercaUtenteConId(id);
+	ClienteBean c = (ClienteBean)s.cercaUtenteConId(id);
 	
 		
 %>	
@@ -24,8 +24,9 @@
 		
 				<ul class="breadcrumb">
 					<li><a href="HomepageAdmin.jsp">Home</a></li>
-					<li><a href="#">Modifica Dipendente</a></li>	
+					<li><a href="#">Modifica Cliente</a></li>	
 				</ul>
+				
 	
 			<!-- left menu starts -->
 			<jsp:include page="menuLateraleAdmin.jsp"></jsp:include>
@@ -34,15 +35,14 @@
 			
 			<div class="box-content" align="center">
 							<font size="4" color="red"></font>
-								<form class="form-horizontal" action="doModificaDipendente.jsp"
+								<form class="form-horizontal" action="doModificaCliente.jsp"
 									method="post">
 									
 									<div class="form-group">
-										<label>Nome</label><br> <input type="text" name="nome1" value=<%=d.getNome()%> ><br> 
-										<label>Cognome</label><br><input type="text" name="cognome1" value=<%=d.getCognome()%>><br> 
-										<label>Posizione</label><br> <input type="text" name="posizione1" value=<%=d.getPosizione()%>><br> 
-										<label>Stipendio</label><br><input type="text" name="stipendio1" value=<%=d.getStipendio()%> ><br> 
-										<br><input type="hidden" value=<%=d.getIdUtente()%>	name="id_utente" ><br> 
+										<label>Nome</label><br> <input type="text" name="nome1" value=<%=c.getNome()%> ><br> 
+										<label>Cognome</label><br><input type="text" name="cognome1" value=<%=c.getCognome()%>><br> 
+										<label>Ragione Sociale</label><br><input type="text" name="ragioneSociale1" value=<%=c.getRagioneSociale()%> ><br> 
+										<br><input type="hidden" value=<%=c.getIdUtente()%> name="id_utente" ><br> 
 										<input type="submit"
 											class="btn btn-primary" value="Modifica"> <br>
 									</div>

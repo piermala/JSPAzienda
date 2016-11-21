@@ -37,8 +37,8 @@ public class VoceDao {
 	
 	
 	
-	/// LEGGI DA NOME E COGNOME
-	public Voce cercaVoce(String nome, String cognome){
+	/// CERCA VOCE
+	public Voce cercaVoce(long id){
 		Session session =HibernateUtil.openSession();
 		Transaction tx=null;
 		
@@ -48,9 +48,8 @@ public class VoceDao {
 		tx=session.getTransaction();
 		tx.begin();
 		
-		Query query = session.createQuery("from Voce where nome=:nome AND cognome=:cognome");
-		query.setParameter("nome", nome);
-		query.setParameter("cognome", cognome);
+		Query query = session.createQuery("from Voce where id_voce=:id");
+		query.setParameter("id", id);
 		
 		v = (Voce) query.uniqueResult();
 		
@@ -128,19 +127,6 @@ public class VoceDao {
 		tx=session.getTransaction();
 		tx.begin();
 		
-		/*Query query = session.createQuery("UPDATE VOCE SET nome=:nome1, cognome=:cognome1, telefono=:telefono1 WHERE nome=:nome2, cognome=:cognome2, telefono=:telefono2");
-		query.setString("nome1", v1.getNome());
-		query.setString("cognome1", v1.getCognome());
-		query.setString("telefono1", v1.getTelefono());
-		query.setString("nome2", v2.getNome());
-		query.setString("cognome2", v2.getCognome());
-		query.setString("telefono2", v2.getTelefono());
-		
-		query.uniqueResult();*/
-		
-		/*if (result > 1){
-			modificato = true;
-		}*/		
 		session.update(v);
 		modificato = true;
 		
@@ -155,34 +141,24 @@ public class VoceDao {
 	
 	
 	/// ELIMINA
-	public boolean eliminaVoce(Voce v){
+	public void eliminaVoce(Voce v){
 		Session session =HibernateUtil.openSession();
 		Transaction tx=null;
-		
-		boolean eliminato = false;
 
 		try{
+			
 		tx=session.getTransaction();
 		tx.begin();
 		
-		Query query = session.createQuery("delete from Voce where nome=:nome, cognome=:cognome, telefono=:telefono");
-		query.setParameter("nome", v.getNome());
-		query.setParameter("cognome", v.getCognome());
-		query.setParameter("telefono", v.getTelefono());
+		session.delete(v);
 		
-		int result = query.executeUpdate();
+		tx.commit();
 		
-		if (result > 0){
-			eliminato = true;
-		}
-		
-		 tx.commit();
 		}catch(Exception ex){
 			tx.rollback();
 		}finally{
 			session.close();
 		}
-		return eliminato;
 	}
 	
 }

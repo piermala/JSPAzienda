@@ -56,9 +56,9 @@ public class ServiziRubrica {
 	
 	
 	/// CERCA VOCE
-	public Voce cercaVoce(String nome, String cognome) {
+	public Voce cercaVoce(long id) {
 		Voce v = null;
-		v = vDao.cercaVoce(nome, cognome);
+		v = vDao.cercaVoce(id);
 
 		return v;
 	}
@@ -95,10 +95,7 @@ public class ServiziRubrica {
 	
 	
 	/// ELIMINA VOCE
-	public boolean eliminaVoce(Voce v) {
-		boolean eliminato = false;
-		eliminato = vDao.eliminaVoce(v);
-
-		return eliminato;
+	public void eliminaVoce(Voce v) {
+		vDao.eliminaVoce(v);
 	}
 }

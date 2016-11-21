@@ -15,6 +15,6 @@ function confirmDeleteCliente(){
 	
 	if (result == true){
 		document.getElementById("formModifiche").action = "doEliminaCliente.jsp";
-		document.getElementById("formModifiche").submit();
+		//document.getElementById("formModifiche").submit();
 	}
 }

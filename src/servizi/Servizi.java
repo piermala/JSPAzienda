@@ -1,7 +1,12 @@
 package servizi;
 
+import hibernateUtil.HibernateUtil;
+
 import java.util.ArrayList;
 import java.util.List;
+
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 import utility.ConvertiPassword;
 import model.AdminBean;
@@ -52,6 +57,16 @@ public class Servizi {
 			
 		return u;		
 	}	
+	
+	
+	/// ELIMINA UTENTE DA ID	
+	public void eliminaUtenteById(long id) {
+
+		UtenteBean u = cercaUtenteConId(id);
+
+		uDao.eliminaUtente(u);
+	}
+
 	
 	
 	/// AGGIUNGI ADMIN
@@ -181,6 +196,14 @@ public class Servizi {
 	}
 	
 	
+	/// LEGGI BUSTA PAGA DA ID
+	public BustaPaga leggiBustaPagaDaId(long id){
+		BustaPaga bp = null;
+		bp = bDao.getBustaPaga(id);
+		
+		return bp;
+	}
+	
 	/// LEGGI TUTTE LE BUSTE PAGA
 	public List<BustaPaga> leggiTutteBustePaga(){
 		
@@ -200,6 +223,19 @@ public class Servizi {
 		return bustePaga;
 
 	}
+	
+	 
+	/// MODIFICA BUSTA PAGA
+	public void modificaBustaPaga(BustaPaga bPaga){
+		bDao.modificaBustaPaga(bPaga);
+	}
+	
+	
+	/// ELIMINA BUSTA PAGA
+	public void eliminaBustaPaga(BustaPaga bPaga){
+		bDao.eliminaBustaPaga(bPaga);
+	}
+	
 	
 	
 	

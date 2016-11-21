@@ -11,7 +11,7 @@ public class Voce {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int id_voce;
+	private long id_voce;
 	private String nome;
 	private String cognome;
 	private String telefono;
@@ -46,10 +46,10 @@ public class Voce {
 	public void setRubrica(Rubrica rubrica) {
 		this.rubrica = rubrica;
 	}
-	public int getId_voce() {
+	public long getId_voce() {
 		return id_voce;
 	}
-	public void setId_voce(int id_voce) {
+	public void setId_voce(long id_voce) {
 		this.id_voce = id_voce;
 	}
 	

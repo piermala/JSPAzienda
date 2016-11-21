@@ -63,6 +63,14 @@
     		
     		}    		
  
+    } else if (!pass.equals(password)) {
+    
+		message.setMessage("Password errata!");
+    	
+    	%>
+    	<jsp:forward page="login.jsp"></jsp:forward>
+    	<%
+    
     } else {
     	
     	message.setMessage("Username e/o password errati!");
