@@ -8,8 +8,8 @@ import dao.VoceDao;
 
 public class ServiziRubrica {
 
-	RubricaDao rDao = new RubricaDao();
-	VoceDao vDao = new VoceDao();
+	private RubricaDao rDao = new RubricaDao();
+	private VoceDao vDao = new VoceDao();
 	
 	
 	/// AGGIUNGI RUBRICA

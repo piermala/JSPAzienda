@@ -64,10 +64,9 @@ public class BustaPaga {
 	public boolean isValid(){
 		boolean valid = false;
 		
-		//Servizi s = new Servizi();
-		//List<DipendenteBean> dipendenti = s.getTuttiDipendenti();
+		System.out.println(dipendente.getStipendio() + " <= " + importo);
 		
-		if (dipendente.getStipendio() <= importo){
+		if (dipendente.getStipendio() >= importo){
 			valid = true;
 		}
 		

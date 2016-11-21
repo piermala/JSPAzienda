@@ -89,7 +89,7 @@
 									
 									<form id="formElimina" method="post" action="doEliminaBustaPaga.jsp"> 
 										<input type="hidden" value="${bp.id_bustaPaga}" name="id_bustaPaga"/> 
-										<button type="submit" id="deleteBustaPaga" class="btn btn-danger" onclick="confirmDeleteBustaPaga()"><i class="glyphicon glyphicon-trash icon-white"> Delete </i></button>
+										<button type="submit" id="deleteBustaPaga" class="btn btn-danger" onclick="return confirm('Vuoi davvero eliminare questa busta paga?')" ><i class="glyphicon glyphicon-trash icon-white"> Delete </i></button>
 									</form> 
 								</td>
 							</tr>

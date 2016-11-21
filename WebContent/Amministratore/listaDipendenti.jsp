@@ -92,7 +92,7 @@
 									
 									<form id="formElimina" method="post" action="doEliminaDipendente.jsp"> 
 										<input type="hidden" value="${d.idUtente}" name="idUtente"/> 
-										<button type="submit" id="deleteDipendenti" class="btn btn-danger" onclick="confirmDeleteDipendente()"><i class="glyphicon glyphicon-trash icon-white"> Delete </i></button>
+										<button type="submit" id="deleteDipendenti" class="btn btn-danger" onclick="return confirm('Vuoi eliminare questo dipendente?')"><i class="glyphicon glyphicon-trash icon-white"> Delete </i></button>
 									</form> 									
 								</td>
 							</tr>

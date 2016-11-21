@@ -1,13 +1,7 @@
 package servizi;
 
-import hibernateUtil.HibernateUtil;
-
 import java.util.ArrayList;
 import java.util.List;
-
-import org.hibernate.Session;
-import org.hibernate.Transaction;
-
 import utility.ConvertiPassword;
 import model.AdminBean;
 import model.BustaPaga;
@@ -23,11 +17,11 @@ import dao.UtenteDao;
 
 public class Servizi {
 
-	UtenteDao uDao = new UtenteDao();
-	AdminDao aDao = new AdminDao();
-	ClienteDao cDao = new ClienteDao();
-	DipendenteDao dDao = new DipendenteDao();
-	BustaDao bDao = new BustaDao();
+	private UtenteDao uDao = new UtenteDao();
+	private AdminDao aDao = new AdminDao();
+	private ClienteDao cDao = new ClienteDao();
+	private DipendenteDao dDao = new DipendenteDao();
+	private BustaDao bDao = new BustaDao();
 	
 	
 	

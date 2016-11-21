@@ -40,7 +40,7 @@
     <![endif]-->
 
     <!-- The fav icon -->
-    <link rel="shortcut icon" href="${pageContext.request.contextPath}/img/favicon.ico">
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/img/GetImageWebSiteRidotta.jpeg">
 
 </head>
 

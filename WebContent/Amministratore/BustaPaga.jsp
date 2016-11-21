@@ -4,18 +4,15 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-    <%@ page isELIgnored="false" %>
     
     <jsp:include page="../charisma/headerHtml.jsp"></jsp:include>
     <jsp:include page="../charisma/navBar.jsp"></jsp:include>
     
     <jsp:useBean id="admin" class="model.AdminBean" scope="session"></jsp:useBean>
     <jsp:useBean id="dipendente" class="model.DipendenteBean" scope="request"></jsp:useBean>    
-    
-<!--     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>   -->
-<!-- 	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css"> -->
-<!-- 	<script	src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>	  -->
-<!--     <script type="text/javascript" src="bustaPaga.js"></script>  -->
+   
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+	
 	
 	
 <% if (admin.isValid()) { %>
@@ -102,6 +99,10 @@
 	
 	<!--      includo tutti script di sotto -->
 	<jsp:include page="../charisma/scriptEnd.jsp"></jsp:include>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>    
+	<script	src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>	  
+    <script type="text/javascript" src="bustaPaga.js"></script> 
 	
 
 </body>

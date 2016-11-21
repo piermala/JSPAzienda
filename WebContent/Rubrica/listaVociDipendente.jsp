@@ -82,7 +82,7 @@ if(dipendente.isValid()) {
 										
 										<form id="formElimina" method="post" action="doEliminaVoceDipendente.jsp"> 
 											<input type="hidden" value="${v.id_voce}" name="id_voce"/> 
-											<button type="submit" id="deleteVoce" class="btn btn-danger" onclick="confirmDeleteVoce()"><i class="glyphicon glyphicon-trash icon-white"> Delete </i></button>
+											<button type="submit" id="deleteVoce" class="btn btn-danger" onclick="return confirm('Vuoi eliminare questa voce?')"><i class="glyphicon glyphicon-trash icon-white"> Delete </i></button>
 										</form> 
 									
 									</td>

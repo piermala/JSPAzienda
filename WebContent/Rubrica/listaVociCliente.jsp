@@ -84,7 +84,7 @@ if(cliente.isValid()) {
 										
 										<form id="formElimina" method="post" action="doEliminaVoce.jsp"> 
 											<input type="hidden" value="${v.id_voce}" name="id_voce"/> 
-											<button type="submit" id="deleteVoce" class="btn btn-danger" onclick="confirmDeleteVoce()"><i class="glyphicon glyphicon-trash icon-white"> Delete </i></button>
+											<button type="submit" id="deleteVoce" class="btn btn-danger" onclick="return confirm('Vuoi eliminare questa voce?')"><i class="glyphicon glyphicon-trash icon-white"> Delete </i></button>
 										</form> 
 									
 									</td>

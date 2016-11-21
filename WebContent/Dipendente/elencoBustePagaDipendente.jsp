@@ -56,7 +56,6 @@
 							<th>Importo</th>
 							<th>Data</th>
 							<th>Codice Busta Paga</th>
-							<th>Comandi</th>
 						</tr>
 					</thead>
 

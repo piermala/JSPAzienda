@@ -63,6 +63,12 @@
 	</html>
 	
 <%} else {
+	
+	try {
+		
+	} catch (NullPointerException e){
+		
+	}
 	session.invalidate();
 	response.sendRedirect("../login/login.jsp");	
 }%>

@@ -87,7 +87,7 @@
 									
 									<form id="formElimina" method="post" action="doEliminaCliente.jsp"> 
 										<input type="hidden" value="${c.idUtente}" name="idUtente"/> 
-										<button type="submit" id="deleteDipendenti" class="btn btn-danger" onclick="confirmDeleteCliente()"><i class="glyphicon glyphicon-trash icon-white"> Delete </i></button>
+										<button type="submit" id="deleteDipendenti" class="btn btn-danger" onclick="return confirm('Vuoi eliminare questo cliente?')"><i class="glyphicon glyphicon-trash icon-white"> Delete </i></button>
 									</form> 
 								
 								</td>
