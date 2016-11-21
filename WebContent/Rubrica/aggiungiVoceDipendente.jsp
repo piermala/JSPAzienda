@@ -14,8 +14,7 @@
 		<div class="row">
 		
 				<ul class="breadcrumb">
-					<li><a href="#">Home</a></li>
-					<li><a href="#">Dipendente</a></li>
+					<li><a href="../Dipendente/HomepageDipendente.jsp">Home</a></li>
 					<li><a href="#">Aggiungi Voce</a></li>
 				</ul>
 	
@@ -25,19 +24,23 @@
 	
 			<div id="content" class="col-lg-10 col-sm-10">
 				<!-- content starts -->
-				<div>
+				<div align="center">
 	
 					<div id="formRegistrazioneVoce">
   
 						<form action="doAggiungiVoceDipendente.jsp" method="post">
-						  Nome <input type="text" name="nome" /><br>
-						  Cognome <input type="text" name="cognome" /><br>
-						  Telefono <input type="number" name="telefono" /><br>
-						  <input type="submit" value="Aggiungi"/>
+						  <label>Nome</label><br>
+						  <input type="text" name="nome" placeholder="Inserisci il nome" required/><br><br>
+						  <label>Cognome</label><br>
+						  <input type="text" name="cognome" placeholder="Inserisci il cognome" required/><br><br>
+						  <label>Telefono</label><br>
+						  <input type="number" name="telefono" placeholder="Inserisci il numero di telefono" required/><br><br>
+						  
+						  <input type="submit" value="Aggiungi" class="btn btn-primary"/><br><br>
 						</form>
 						
 						<form action="../Dipendente/HomepageDipendente.jsp" method="post">
-						  <input type="submit" value="Annulla"/>	
+						  <input type="submit" value="Annulla" class="btn btn-primary"/>	
 						</form>
 						
 					</div>

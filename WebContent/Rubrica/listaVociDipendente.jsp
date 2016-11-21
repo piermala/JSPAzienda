@@ -8,6 +8,9 @@
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     
     <jsp:useBean id="dipendente" class="model.DipendenteBean" scope="session"></jsp:useBean>
+    <jsp:useBean id="message" class="utility.Message" scope="request"></jsp:useBean>
+    
+    <script type="text/javascript" src="edit.js"></script>
     
 <%
 
@@ -27,13 +30,12 @@ if(dipendente.isValid()) {
 	<jsp:include page="../charisma/navBar.jsp"></jsp:include>
 	
 
-<!-- da qui -->
-<div class="ch-container">
+
+	<div class="ch-container">
 		<div class="row">
 		
 				<ul class="breadcrumb">
 					<li><a href="#">Home</a></li>
-					<li><a href="#">Dipendente</a></li>
 					<li><a href="#">Lista Voci</a></li>
 				</ul>
 	
@@ -42,23 +44,26 @@ if(dipendente.isValid()) {
 			<!-- left menu ends -->
 	
 			<div id="content" class="col-lg-10 col-sm-10">
-				<!-- content starts -->
 				<div>
 	
-					<div id="elencoVoci">
+					<div class="box-content">
+					<div align="center">
+						<font size="4" color="red" class="messageConfirmed"><%=message.getMessage()%></font>
+					</div>
+				</div>
 
-					<table border="2">
+
+				<table border="3" class="table table-striped table-bordered bootstrap-datatable datatable responsive">
+
 						<thead>
 							<tr>
-								<td>N.</td>
-								<td>Nome</td>
-								<td>Cognome</td>
-								<td>Telefono</td>
+								<th>N.</th>
+								<th>Nome</th>
+								<th>Cognome</th>
+								<th>Telefono</th>
+								<th>Comandi</th>
 							</tr>
 						</thead>
-
-
-						
 
 							<c:set var="i" value="1" scope="page" />
 
@@ -69,6 +74,18 @@ if(dipendente.isValid()) {
  									<td><c:out value="${v.nome}" /></td> 
  									<td><c:out value="${v.cognome}" /></td> 
  									<td><c:out value="${v.telefono}" /></td> 
+ 									<td>
+										<form id="formModifiche" method="post" action="modificaVoceDipendente.jsp"> 
+											<input type="hidden" value="${v.id_voce}" name="id_voce"/> 
+											<button type="submit" id="editVoce" class="btn btn-info" ><i class="glyphicon glyphicon-edit icon-white"> Edit </i></button>
+										</form> 
+										
+										<form id="formElimina" method="post" action="doEliminaVoceDipendente.jsp"> 
+											<input type="hidden" value="${v.id_voce}" name="id_voce"/> 
+											<button type="submit" id="deleteVoce" class="btn btn-danger" onclick="confirmDeleteVoce()"><i class="glyphicon glyphicon-trash icon-white"> Delete </i></button>
+										</form> 
+									
+									</td>
 								</tr> 
 
 								<c:set var="i" value="${i+1}" scope="page" />
@@ -90,7 +107,7 @@ if(dipendente.isValid()) {
 
 			</div>
 			<!-- content ends -->
-		</div>
+		
 		<!--/#content.col-md-0-->
 	</div>
 	<!--/fluid-row-->

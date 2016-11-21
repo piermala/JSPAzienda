@@ -4,13 +4,20 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-    <jsp:useBean id="admin" class="model.AdminBean" scope="session"></jsp:useBean>
-    <jsp:useBean id="dipendente" class="model.DipendenteBean" scope="request"></jsp:useBean>
+    <%@ page isELIgnored="false" %>
     
     <jsp:include page="../charisma/headerHtml.jsp"></jsp:include>
-	<jsp:include page="../charisma/navBar.jsp"></jsp:include>
+    <jsp:include page="../charisma/navBar.jsp"></jsp:include>
+    
+    <jsp:useBean id="admin" class="model.AdminBean" scope="session"></jsp:useBean>
+    <jsp:useBean id="dipendente" class="model.DipendenteBean" scope="request"></jsp:useBean>    
+    
+<!--     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>   -->
+<!-- 	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css"> -->
+<!-- 	<script	src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>	  -->
+<!--     <script type="text/javascript" src="bustaPaga.js"></script>  -->
 	
-
+	
 <% if (admin.isValid()) { %>
 	
 	<div class="ch-container">
@@ -56,10 +63,10 @@
 					<br>
 					
 					<label>Data:</label><br>
-					<input type="text" name="data" id="data" placeholder="Inserisci la data"/> <br>
+					<input type="text" name="data" id="data" placeholder="Inserisci la data"/ required> <br>
 					
 					<label>Importo:</label><br>
-					<input type="text" name="importo" id="importo" placeholder="Inserisci l'importo per l'utente"/> <br><br>
+					<input type="text" name="importo" id="importo" placeholder="Inserisci l'importo per l'utente" required/> <br><br>
 					
 					
 					<button type="submit" name="registra" class="btn btn-primary">Registra</button><br><br>			

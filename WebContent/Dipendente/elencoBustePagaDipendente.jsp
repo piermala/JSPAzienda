@@ -8,6 +8,7 @@
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     
     <jsp:useBean id="dipendente" class="model.DipendenteBean" scope="session"></jsp:useBean>
+    <jsp:useBean id="message" class="utility.Message" scope="request"></jsp:useBean>
     
     <jsp:include page="../charisma/headerHtml.jsp"></jsp:include>
 	<jsp:include page="../charisma/navBar.jsp"></jsp:include>
@@ -38,17 +39,24 @@
 			<!-- left menu ends -->
 
 		<div id="content" class="col-lg-10 col-sm-10">
-			<!-- content starts -->
-			<div>
+				<div>
+	
+					<div class="box-content">
+					<div align="center">
+						<font size="4" color="red" class="messageConfirmed"><%=message.getMessage()%></font>
+					</div>
+				</div>
 
-				<table border="2">
+
+				<table border="3" class="table table-striped table-bordered bootstrap-datatable datatable responsive">
 					<thead>
 						<tr>
-							<td>N.</td>
-							<td>Posizione</td>
-							<td>Importo</td>
-							<td>Data</td>
-							<td>Codice Busta Paga</td>
+							<th>N.</th>
+							<th>Posizione</th>
+							<th>Importo</th>
+							<th>Data</th>
+							<th>Codice Busta Paga</th>
+							<th>Comandi</th>
 						</tr>
 					</thead>
 

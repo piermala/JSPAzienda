@@ -30,7 +30,6 @@ if(cliente.isValid()) {
 	
 	<script type="text/javascript" src="edit.js"></script>
 
-<!-- da qui -->
 <div class="ch-container">
 		<div class="row">
 		
